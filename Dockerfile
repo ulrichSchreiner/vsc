@@ -68,8 +68,8 @@ RUN /usr/local/go/bin/go get \
     golang.org/x/tools/cmd/stringer \
     github.com/josharian/impl \
     golang.org/x/tools/cmd/gorename \
-    github.com/redefiance/go-find-references \
-    github.com/redefiance/go-outline \
+    github.com/lukehoban/go-find-references \
+    github.com/lukehoban/go-outline \
     sourcegraph.com/sqs/goreturns \
     github.com/constabulary/gb/...
 
