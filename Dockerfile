@@ -38,6 +38,7 @@ RUN /usr/local/go/bin/go get \
     golang.org/x/tools/cmd/gorename \
     github.com/redefiance/go-find-references \
     github.com/redefiance/go-outline \
+    sourcegraph.com/sqs/goreturns \
     github.com/constabulary/gb/...
 
 
