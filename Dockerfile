@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y \
         libxtst6 \
         unzip \
         mercurial \
+        openssh-client \
         --no-install-recommends
 
 ENV GO_VERSION 1.5.1
