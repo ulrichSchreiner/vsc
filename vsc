@@ -1,0 +1,5 @@
+#!/bin/sh
+
+docker run -it --rm -v /tmp/.X11-unix:/tmp/.X11-unix  -e DISPLAY=unix$DISPLAY --device /dev/dri -e HOSTUSER=`id -un` -e HOSTGROUP=`id -gn` -e HOSTUSERID=`id -u` -e HOSTGROUPID=`id -g` vsc
+
+
