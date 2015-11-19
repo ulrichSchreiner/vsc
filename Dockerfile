@@ -55,6 +55,7 @@ RUN curl -sSL https://az764295.vo.msecnd.net/public/${vsc_version}-release/VSCod
 
 COPY startup.sh /usr/local/bin/startup.sh
 COPY code.sh /usr/local/bin/code.sh
+RUN mkdir /devhome
 #WORKDIR $HOME
 VOLUME /work
 ENTRYPOINT [ "/usr/local/bin/startup.sh" ]
