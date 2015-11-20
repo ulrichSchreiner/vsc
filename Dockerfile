@@ -1,7 +1,6 @@
-#FROM jess/chromium
-#MAINTAINER Jessica Frazelle <jess@docker.com>
 FROM debian:sid
-MAINTAINER Jessica Frazelle <jess@docker.com>
+MAINTAINER Ulrich Schreiner <ulrich.schreiner@gmail.com>
+#MAINTAINER Jessica Frazelle <jess@docker.com>
 
 #ADD https://dl.google.com/linux/direct/google-talkplugin_current_amd64.deb /src/google-talkplugin_current_amd64.deb
 
@@ -40,7 +39,7 @@ RUN mkdir -p /usr/share/icons/hicolor && \
 	unzip \
 	openssh-client \
 	xdg-utils \
-	--no-install-recommends \
+	--no-install-recommends --fix-missing \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& rm -rf /src/*.deb
 
@@ -73,8 +72,6 @@ RUN /usr/local/go/bin/go get \
     sourcegraph.com/sqs/goreturns \
     github.com/constabulary/gb/...
 
-
-
 env vsc_version 0.10.1
 
 # download the source
@@ -82,7 +79,6 @@ RUN curl -sSL https://az764295.vo.msecnd.net/public/${vsc_version}-release/VSCod
         && unzip /tmp/vs.zip -d /usr/src/ \
         && rm -rf /tmp/vs.zip \
         && ln -snf /usr/src/VSCode-linux-x64/Code /usr/local/bin/code
-
 
 # install node
 RUN curl -sL https://deb.nodesource.com/setup | bash -
@@ -99,7 +95,7 @@ COPY startup.sh /usr/local/bin/startup.sh
 COPY code.sh /usr/local/bin/code.sh
 RUN mkdir /devhome
 ADD projectsettings.json /devhome/projectsettings.json
-#WORKDIR $HOME
+
 VOLUME /work
 ENTRYPOINT [ "/usr/local/bin/startup.sh" ]
 

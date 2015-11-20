@@ -1,6 +1,9 @@
 #!/bin/sh
 
 export GOPATH=/work
+export GO15VENDOREXPERIMENT=1
+/go/bin/gocode set package-lookup-mode gb
+
 mkdir -p /work/.vscode/extensions
 mkdir -p /devhome/.vscode
 
