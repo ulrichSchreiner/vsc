@@ -1,17 +1,27 @@
 #!/bin/sh
 
-export GOPATH=/go:/work
+export GOPATH=/work
 mkdir -p /work/.vscode/extensions
-mkdir -p $HOME/.vscode
-ln -snf /work/.vscode/extensions $HOME/.vscode/extensions
-cd $HOME/.vscode/extensions
-if [ ! -d "$HOME/.vscode/extensions/vscode-go" ]; then
+mkdir -p /devhome/.vscode
+
+#symlink the extions from the home to the workspace, so every
+#workspace has its own extensions
+ln -s /work/.vscode/extensions /devhome/.vscode/
+
+# TODO if settings.json does not exist, copy one
+cp /devhome/projectsettings.json /work/.vscode/settings.json
+
+cd /work/.vscode/extensions
+if [ ! -d "/work/.vscode/extensions/vscode-go" ]; then
     git clone https://github.com/Microsoft/vscode-go
     cd vscode-go
     npm install
-    ./node_modules/.bin/tsc
+    #./node_modules/.bin/tsc
+    npm run vscode:prepublish
 fi
 
+ls /work/.vscode/extensions
+echo $PATH
 echo $GOPATH
 
 code /work

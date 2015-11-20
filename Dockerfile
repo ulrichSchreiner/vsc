@@ -98,6 +98,7 @@ RUN ln -sf /usr/bin/nodejs /usr/bin/node
 COPY startup.sh /usr/local/bin/startup.sh
 COPY code.sh /usr/local/bin/code.sh
 RUN mkdir /devhome
+ADD projectsettings.json /devhome/projectsettings.json
 #WORKDIR $HOME
 VOLUME /work
 ENTRYPOINT [ "/usr/local/bin/startup.sh" ]
