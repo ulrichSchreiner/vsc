@@ -20,8 +20,4 @@ if [ ! -d "/work/.vscode/extensions/vscode-go" ]; then
     npm run vscode:prepublish
 fi
 
-ls /work/.vscode/extensions
-echo $PATH
-echo $GOPATH
-
 code /work
