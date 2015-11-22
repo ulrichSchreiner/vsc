@@ -43,7 +43,7 @@ You can use the given `vsc` script or you put the following in your `.bashrc`
 (or anything compareable if you're not using bash):
 ```
 _vsc() {
-	docker pull quay.io/ulrichschreiner/vsc
+  docker pull quay.io/ulrichschreiner/vsc
   docker run -it --rm \
       --privileged \
       -v /tmp/.X11-unix:/tmp/.X11-unix  \
