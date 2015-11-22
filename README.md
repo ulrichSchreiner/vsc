@@ -1,5 +1,7 @@
 # vscode-go in a container
 
+[![Docker Repository on Quay](https://quay.io/repository/ulrichschreiner/vsc/status "Docker Repository on Quay")](https://quay.io/repository/ulrichschreiner/vsc)
+
 ![Screenshot](vsc_debug.png)
 
 This repository bundles VisualStudioCode and their vscode-go extension as well
