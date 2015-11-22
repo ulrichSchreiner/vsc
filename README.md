@@ -15,7 +15,7 @@ folder but your project settings will stay in your workspace's `.vscode` subdire
 
 [delve](https://github.com/derekparker/delve) is installed in the container too.
 When using `gb` to build the binary, you should create a new launch configuration
-in vscode with content like this (if your binary is `test/bin`):
+in vscode with content like this (if your binary is `bin/test`):
 ```
 {
 	"version": "0.2.0",
@@ -32,7 +32,7 @@ in vscode with content like this (if your binary is `test/bin`):
 	]
 }
 ```
-
+Note the `mode` which is `exec`; in this case `dlv` will take the binary as it is.
 Now you can build your binary in a shell with `gb build` and debug it inside
 of vscode with delve!
 
