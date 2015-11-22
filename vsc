@@ -17,6 +17,4 @@ docker run -it --rm \
     -e HOSTUSERID=`id -u` \
     -e HOSTGROUPID=`id -g` \
     -e WORKSPACE=`pwd` \
-    vsc
-
-
+    vsc "$@"

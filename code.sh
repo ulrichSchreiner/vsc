@@ -7,7 +7,7 @@ export GO15VENDOREXPERIMENT=1
 #ugly hack: vscode-go searches the debugger in the GOPATH/bin directory
 #remove this when this is fixed
 mkdir -p $WORKSPACE/bin
-ln -sf /go/bin/dlv $WORKSPACE/bin/
+#ln -sf /go/bin/dlv $WORKSPACE/bin/
 
 mkdir -p $HOME/.config/extensions
 mkdir -p $HOME/.vscode

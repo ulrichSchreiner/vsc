@@ -56,7 +56,7 @@ _vsc() {
       -e HOSTUSERID=`id -u` \
       -e HOSTGROUPID=`id -g` \
       -e WORKSPACE=`pwd` \
-      quay.io/ulrichschreiner/vsc
+      quay.io/ulrichschreiner/vsc "$@"
 }
 alias vsc=_vsc
 ```
