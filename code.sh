@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export GOPATH=$WORKSPACE
+export GOPATH=$WORKSPACE:$WORKSPACE/vendor
 export GO15VENDOREXPERIMENT=1
 /go/bin/gocode set package-lookup-mode gb
 
