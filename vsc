@@ -1,9 +1,13 @@
 #!/bin/sh
 
+# privileged is needed by delve debugger ...
+# also pass in the current working-directory so the source path's
+# in the go-binaries will be correct if the binary is built outside
 
 docker run -it --rm \
+    --privileged \
     -v /tmp/.X11-unix:/tmp/.X11-unix  \
-    -v `pwd`:/work \
+    -v `pwd`:`pwd` \
     -v $HOME/.config:/config \
     -e DISPLAY=unix$DISPLAY \
     -v $HOME/.gitconfig:/devhome/.gitconfig \
@@ -12,6 +16,7 @@ docker run -it --rm \
     -e HOSTGROUP=`id -gn` \
     -e HOSTUSERID=`id -u` \
     -e HOSTGROUPID=`id -g` \
+    -e WORKSPACE=`pwd` \
     vsc
 
 

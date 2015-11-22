@@ -1,26 +1,29 @@
 #!/bin/sh
 
-export GOPATH=/work
+export GOPATH=$WORKSPACE
 export GO15VENDOREXPERIMENT=1
 /go/bin/gocode set package-lookup-mode gb
 
-mkdir -p /work/.vscode/extensions
-mkdir -p /devhome/.vscode
+#ugly hack: vscode-go searches the debugger in the GOPATH/bin directory
+#remove this when this is fixed
+mkdir -p $WORKSPACE/bin
+ln -sf /go/bin/dlv $WORKSPACE/bin/
 
-#symlink the extions from the home to the workspace, so every
-#workspace has its own extensions
-ln -s /work/.vscode/extensions /devhome/.vscode/
+mkdir -p $HOME/.config/extensions
+mkdir -p $HOME/.vscode
+ln -snf $HOME/.config/extensions $HOME/.vscode/
 
-# TODO if settings.json does not exist, copy one
-cp /devhome/projectsettings.json /work/.vscode/settings.json
+mkdir -p $WORKSPACE/.vscode
+if [ ! -f $WORKSPACE/.vscode/settings.json ]; then
+    cp /devhome/projectsettings.json $WORKSPACE/.vscode/settings.json
+fi
 
-cd /work/.vscode/extensions
-if [ ! -d "/work/.vscode/extensions/vscode-go" ]; then
+cd $HOME/.vscode/extensions
+if [ ! -d "$HOME/.vscode/extensions/vscode-go" ]; then
     git clone https://github.com/Microsoft/vscode-go
     cd vscode-go
     npm install
-    #./node_modules/.bin/tsc
     npm run vscode:prepublish
 fi
 
-code /work
+code $WORKSPACE
