@@ -42,10 +42,10 @@ RUN /usr/local/go/bin/go get \
     sourcegraph.com/sqs/goreturns \
     github.com/constabulary/gb/...
 
-env vsc_version 0.10.1
+ENV VSC_VERSION 0.10.1
 
 # download the source
-RUN curl -sSL https://az764295.vo.msecnd.net/public/${vsc_version}-release/VSCode-linux64.zip -o /tmp/vs.zip \
+RUN curl -sSL https://az764295.vo.msecnd.net/public/${VSC_VERSION}-release/VSCode-linux64.zip -o /tmp/vs.zip \
         && unzip /tmp/vs.zip -d /usr/src/ \
         && rm -rf /tmp/vs.zip \
         && ln -snf /usr/src/VSCode-linux-x64/Code /usr/local/bin/code
