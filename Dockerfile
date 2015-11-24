@@ -1,53 +1,23 @@
-FROM debian:sid
+FROM ubuntu:15.10
 MAINTAINER Ulrich Schreiner <ulrich.schreiner@gmail.com>
-#MAINTAINER Jessica Frazelle <jess@docker.com>
 
-#ADD https://dl.google.com/linux/direct/google-talkplugin_current_amd64.deb /src/google-talkplugin_current_amd64.deb
-
-#ADD https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb /src/google-chrome-stable_current_amd64.deb
-
-# Install Chromium
-RUN mkdir -p /usr/share/icons/hicolor && \
-	apt-get update && apt-get install -y \
-	ca-certificates \
-	build-essential \
+RUN apt-get update && apt-get install -y \
+  ca-certificates \
 	curl \
 	git \
 	mercurial \
-	fonts-liberation \
-	gconf-service \
-	hicolor-icon-theme \
-	libappindicator1 \
-	libasound2 \
-	libcanberra-gtk-module \
-	libcurl3 \
-	libexif-dev \
-	libgconf-2-4 \
-	libgl1-mesa-dri \
-	libgl1-mesa-glx \
-	libnspr4 \
-	libnss3 \
-	libpango1.0-0 \
-	libv4l-0 \
-	libxss1 \
-	libxtst6 \
-        libgnome-keyring-dev \
-        libgtk2.0-0 \
-        libpci3 \
-        libxtst6 \
 	wget \
 	unzip \
 	openssh-client \
 	xdg-utils \
-	--no-install-recommends --fix-missing \
-	&& rm -rf /var/lib/apt/lists/* \
-	&& rm -rf /src/*.deb
-
-RUN curl -sSL https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o /tmp/chrome.deb
-RUN dpkg -i /tmp/chrome.deb
-
-COPY local.conf /etc/fonts/local.conf
-
+	nodejs npm \
+	libgtk2.0-0 \
+	libgconf-2-4 \
+	libasound2 \
+	libxtst6 \
+	libnss3 \
+	dbus-x11 \
+	--no-install-recommends
 
 ENV GO_VERSION 1.5.1
 RUN curl https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz |tar -C /usr/local -xz
@@ -80,14 +50,6 @@ RUN curl -sSL https://az764295.vo.msecnd.net/public/${vsc_version}-release/VSCod
         && rm -rf /tmp/vs.zip \
         && ln -snf /usr/src/VSCode-linux-x64/Code /usr/local/bin/code
 
-# install node
-RUN curl -sL https://deb.nodesource.com/setup | bash -
-RUN apt-get update && apt-get install -y \
-	nodejs \
-	npm \
-	&& rm -rf /var/lib/apt/lists/* \
-	&& npm update -g
-
 RUN ln -sf /go/bin/* /usr/bin/
 RUN ln -sf /usr/bin/nodejs /usr/bin/node
 
@@ -98,4 +60,3 @@ ADD projectsettings.json /devhome/projectsettings.json
 
 VOLUME /work
 ENTRYPOINT [ "/usr/local/bin/startup.sh" ]
-
