@@ -26,4 +26,4 @@ if [ ! -d "$HOME/.vscode/extensions/vscode-go" ]; then
     npm run vscode:prepublish
 fi
 
-code $WORKSPACE
+exec code $WORKSPACE
