@@ -51,6 +51,7 @@ _vsc() {
       -v $HOME/.config:/config \
       -e DISPLAY=unix$DISPLAY \
       -v $HOME/.gitconfig:/devhome/.gitconfig \
+      -v $SSH_AUTH_SOCK:/ssh-agent --env SSH_AUTH_SOCK=/ssh-agent \
       --device /dev/dri \
       -e HOSTUSER=`id -un` \
       -e HOSTGROUP=`id -gn` \
@@ -61,6 +62,8 @@ _vsc() {
 }
 alias vsc=_vsc
 ```
+Note: If you have private repositories where you need your SSH keys, you should have an agent running before starting `vsc` so the agent forwarding of the keys will work.
+
 When using this alias you do not need to clone this repository. `docker` will
 pull the public image, so be patient when doing this the first time. Note: there is no versioning of the containers at this time. Do a regularly `docker pull quay.io/ulrichschreiner/vsc` to keep the image up to date (the given alias function does this for you).
 

@@ -11,6 +11,7 @@ docker run -it --rm \
     -v $HOME/.config:/config \
     -e DISPLAY=unix$DISPLAY \
     -v $HOME/.gitconfig:/devhome/.gitconfig \
+    -v $SSH_AUTH_SOCK:/ssh-agent --env SSH_AUTH_SOCK=/ssh-agent \
     --device /dev/dri \
     -e HOSTUSER=`id -un` \
     -e HOSTGROUP=`id -gn` \
