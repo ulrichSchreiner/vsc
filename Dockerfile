@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y \
 	libxtst6 \
 	libnss3 \
 	dbus-x11 \
+	screen \
 	--no-install-recommends
 
 ENV GO_VERSION 1.5.2
@@ -57,6 +58,7 @@ COPY startup.sh /usr/local/bin/startup.sh
 COPY code.sh /usr/local/bin/code.sh
 RUN mkdir /devhome
 ADD projectsettings.json /devhome/projectsettings.json
+RUN echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
 
 VOLUME /work
 ENTRYPOINT [ "/usr/local/bin/startup.sh" ]

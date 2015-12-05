@@ -14,4 +14,5 @@ if [ ! -d "/config/vsc$WORKSPACE" ]; then
 fi
 ln -s /config/vsc$WORKSPACE /devhome/.config
 
-exec su $HOSTUSER -c /usr/local/bin/code.sh "$@"
+screen su $HOSTUSER -c /usr/local/bin/code.sh "$@"
+
