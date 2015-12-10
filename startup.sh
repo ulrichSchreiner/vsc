@@ -1,5 +1,7 @@
 #!/bin/bash
 
+locale-gen $LANG
+
 groupadd -g $HOSTGROUPID $HOSTGROUP
 useradd $HOSTUSER -u $HOSTUSERID -g $HOSTGROUP -G video -M -d /devhome
 chown -R $HOSTUSER:$HOSTGROUP /devhome

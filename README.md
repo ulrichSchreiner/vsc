@@ -53,6 +53,7 @@ _vsc() {
       -v $HOME/.gitconfig:/devhome/.gitconfig \
       -v $SSH_AUTH_SOCK:/ssh-agent --env SSH_AUTH_SOCK=/ssh-agent \
       --device /dev/dri \
+      -e LANG=$LANG \
       -e HOSTUSER=`id -un` \
       -e HOSTGROUP=`id -gn` \
       -e HOSTUSERID=`id -u` \
