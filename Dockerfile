@@ -44,6 +44,8 @@ RUN /usr/local/go/bin/go get \
     sourcegraph.com/sqs/goreturns \
     github.com/constabulary/gb/...
 
+RUN curl -o /usr/bin/gosu -sSL "https://github.com/tianon/gosu/releases/download/1.7/gosu-$(dpkg --print-architecture)" && chmod +x /usr/bin/gosu
+
 ENV VSC_VERSION 0.10.3
 
 # download the source
@@ -58,7 +60,7 @@ RUN ln -sf /usr/bin/nodejs /usr/bin/node
 COPY startup.sh /usr/local/bin/startup.sh
 COPY code.sh /usr/local/bin/code.sh
 RUN mkdir /devhome
-ADD projectsettings.json /devhome/projectsettings.json
+COPY projectsettings.json /devhome/projectsettings.json
 RUN echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
 
 VOLUME /work

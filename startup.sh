@@ -12,9 +12,8 @@ if [ "$1" == "cleanconfig" ]; then
 fi
 
 if [ ! -d "/config/vsc$WORKSPACE" ]; then
-  su $HOSTUSER -c "mkdir -p /config/vsc$WORKSPACE"
+  gosu $HOSTUSER bash -c "mkdir -p /config/vsc$WORKSPACE"
 fi
 ln -s /config/vsc$WORKSPACE /devhome/.config
 
-screen su $HOSTUSER -c /usr/local/bin/code.sh "$@"
-
+screen gosu $HOSTUSER dbus-launch /usr/local/bin/code.sh "$@"
