@@ -46,7 +46,7 @@ RUN /usr/local/go/bin/go get \
 
 RUN curl -o /usr/bin/gosu -sSL "https://github.com/tianon/gosu/releases/download/1.7/gosu-$(dpkg --print-architecture)" && chmod +x /usr/bin/gosu
 
-ENV VSC_VERSION 0.10.3
+ENV VSC_VERSION 0.10.6
 
 # download the source
 RUN curl -sSL https://az764295.vo.msecnd.net/public/${VSC_VERSION}/VSCode-linux64.zip -o /tmp/vs.zip \
