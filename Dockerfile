@@ -21,7 +21,7 @@ RUN apt-get update && apt-get install -y \
 	screen \
 	--no-install-recommends
 
-ENV GO_VERSION 1.5.2
+ENV GO_VERSION 1.5.3
 RUN curl https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz |tar -C /usr/local -xz
 RUN ln -sf /usr/local/go/bin/go /usr/bin/go
 
