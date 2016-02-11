@@ -46,7 +46,12 @@ RUN curl -o /usr/bin/gosu -sSL "https://github.com/tianon/gosu/releases/download
 
 ENV VSC_VERSION 0.10.6
 ENV VSCODE_URL https://az764295.vo.msecnd.net/public/${VSC_VERSION}/VSCode-linux64.zip
-ENV VSCODE_URL https://az764295.vo.msecnd.net/stable/db71ac615ddf9f33b133ff2536f5d33a77d4774e/VSCode-linux-x64-stable.zip
+# https://github.com/Microsoft/vscode/issues/1019
+# the next is the static URL for the latest release, but the docerfile
+# will be rebuilt if the upper version is changed. so, yeah, this is
+# freaky, but as long as they do not use the github-releases there is no
+# version specific download-URL.
+ENV VSCODE_URL http://go.microsoft.com/fwlink/?LinkID=620884
 
 # download the source
 RUN curl -sSL ${VSCODE_URL} -o /tmp/vs.zip \
