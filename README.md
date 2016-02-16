@@ -9,7 +9,7 @@ as a bunch of go tools in a container. To work with this container, you need
 an installed version of go and [gb](http://getgb.io).
 
 Start this container with `vsc` in your current `gb` workspace from the command
-line. Your user settings and extensions will be stored in your `$HOME/.config/vsc[workspacepath]`
+line. Your user settings and extensions will be stored in your `$HOME/.config/vsc`
 folder but your project settings will stay in your workspace's `.vscode` subdirectory.
 
 

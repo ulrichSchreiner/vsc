@@ -21,6 +21,11 @@ if [ ! -d "$HOME/.vscode/extensions/vscode-go" ]; then
     cd vscode-go
     npm install
     npm run vscode:prepublish
+else
+    cd vscode-go
+    git pull
+    npm install
+    npm run vscode:prepublish
 fi
 
 code $WORKSPACE
