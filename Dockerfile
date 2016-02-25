@@ -1,25 +1,30 @@
 FROM ubuntu:15.10
 MAINTAINER Ulrich Schreiner <ulrich.schreiner@gmail.com>
 
+
 RUN apt-get update && apt-get install -y \
-  ca-certificates \
-	curl \
-	git \
-	gcc \
-	mercurial \
-	wget \
-	unzip \
-	openssh-client \
-	xdg-utils \
-	nodejs npm \
-	libgtk2.0-0 \
-	libgconf-2-4 \
-	libasound2 \
-	libxtst6 \
-	libnss3 \
-	dbus-x11 \
-	screen \
-	--no-install-recommends
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    git \
+    gcc \
+    mercurial \
+    wget \
+    unzip \
+    openssh-client \
+    xdg-utils \
+    libgtk2.0-0 \
+    libgconf-2-4 \
+    libasound2 \
+    libxtst6 \
+    libnss3 \
+    dbus-x11 \
+    screen \
+    --no-install-recommends
+
+RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
+RUN echo 'deb https://deb.nodesource.com/node_5.x vivid main' > /etc/apt/sources.list.d/nodesource.list
+RUN apt-get update && apt-get install -y nodejs --no-install-recommends
 
 ENV GO_VERSION 1.6
 RUN curl https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz |tar -C /usr/local -xz
