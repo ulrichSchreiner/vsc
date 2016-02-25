@@ -1,4 +1,4 @@
 #!/bin/sh
 
-docker build -t ulrichschreiner/vsc .
+docker build -t quay.io/ulrichschreiner/vsc .
 
