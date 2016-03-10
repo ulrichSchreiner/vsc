@@ -1,7 +1,6 @@
 #!/bin/sh
 
 export GOPATH=$WORKSPACE:$WORKSPACE/vendor
-export GO15VENDOREXPERIMENT=1
 /go/bin/gocode set package-lookup-mode gb
 
 mkdir -p $WORKSPACE/bin
@@ -28,4 +27,4 @@ else
     npm run vscode:prepublish
 fi
 
-code $WORKSPACE
+/usr/src/VSCode-linux-x64/code $WORKSPACE
