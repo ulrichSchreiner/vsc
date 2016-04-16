@@ -26,7 +26,7 @@ RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
 RUN echo 'deb https://deb.nodesource.com/node_5.x vivid main' > /etc/apt/sources.list.d/nodesource.list
 RUN apt-get update && apt-get install -y nodejs --no-install-recommends
 
-ENV GO_VERSION 1.6
+ENV GO_VERSION 1.6.1
 RUN curl https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz |tar -C /usr/local -xz
 RUN ln -sf /usr/local/go/bin/go /usr/bin/go
 
@@ -49,14 +49,8 @@ RUN /usr/local/go/bin/go get \
 
 RUN curl -o /usr/bin/gosu -sSL "https://github.com/tianon/gosu/releases/download/1.7/gosu-$(dpkg --print-architecture)" && chmod +x /usr/bin/gosu
 
-ENV VSC_VERSION 0.10.11
-ENV VSCODE_URL https://az764295.vo.msecnd.net/public/${VSC_VERSION}/VSCode-linux64.zip
-# https://github.com/Microsoft/vscode/issues/1019
-# the next is the static URL for the latest release, but the docerfile
-# will be rebuilt if the upper version is changed. so, yeah, this is
-# freaky, but as long as they do not use the github-releases there is no
-# version specific download-URL.
-ENV VSCODE_URL http://go.microsoft.com/fwlink/?LinkID=620884
+ENV VSC_VERSION 1.0
+ENV VSCODE_URL https://vscode-update.azurewebsites.net/latest/linux-x64/stable 
 
 # download the source
 RUN curl -sSL ${VSCODE_URL} -o /tmp/vs.zip \
