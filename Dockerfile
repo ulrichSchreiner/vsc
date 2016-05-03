@@ -26,7 +26,7 @@ RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
 RUN echo 'deb https://deb.nodesource.com/node_5.x vivid main' > /etc/apt/sources.list.d/nodesource.list
 RUN apt-get update && apt-get install -y nodejs --no-install-recommends
 
-ENV GO_VERSION 1.6.1
+ENV GO_VERSION 1.6.2
 RUN curl https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz |tar -C /usr/local -xz
 RUN ln -sf /usr/local/go/bin/go /usr/bin/go
 
@@ -39,13 +39,25 @@ RUN /usr/local/go/bin/go get \
     github.com/derekparker/delve/cmd/dlv \
     github.com/golang/lint/golint \
     github.com/rogpeppe/godef \
-    golang.org/x/tools/cmd/gorename \
-    github.com/lukehoban/go-find-references \
     github.com/lukehoban/go-outline \
     sourcegraph.com/sqs/goreturns \
     github.com/tpng/gopkgs \
     github.com/newhook/go-symbols \
-    github.com/constabulary/gb/...
+    github.com/constabulary/gb/... \
+    golang.org/x/tools/cmd/gorename \
+    golang.org/x/tools/cmd/guru/serial \
+    golang.org/x/tools/go/ast/astutil \
+    golang.org/x/tools/go/buildutil \
+    golang.org/x/tools/go/types/typeutil \
+    golang.org/x/tools/container/intsets \
+    golang.org/x/tools/refactor/importgraph \
+    golang.org/x/tools/go/ssa \
+    golang.org/x/tools/go/loader \
+    golang.org/x/tools/go/callgraph \
+    golang.org/x/tools/go/ssa/ssautil \
+    golang.org/x/tools/go/pointer \
+    golang.org/x/tools/go/callgraph/static \
+    golang.org/x/tools/cmd/guru
 
 RUN curl -o /usr/bin/gosu -sSL "https://github.com/tianon/gosu/releases/download/1.7/gosu-$(dpkg --print-architecture)" && chmod +x /usr/bin/gosu
 
