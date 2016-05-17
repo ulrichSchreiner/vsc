@@ -1,4 +1,4 @@
-FROM ubuntu:15.10
+FROM ubuntu:16.04
 MAINTAINER Ulrich Schreiner <ulrich.schreiner@gmail.com>
 
 
@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y \
     libgtk2.0-0 \
     libgconf-2-4 \
     libasound2 \
+    libnotify-bin \
     libxtst6 \
     libnss3 \
     dbus-x11 \
@@ -61,7 +62,7 @@ RUN /usr/local/go/bin/go get \
 
 RUN curl -o /usr/bin/gosu -sSL "https://github.com/tianon/gosu/releases/download/1.7/gosu-$(dpkg --print-architecture)" && chmod +x /usr/bin/gosu
 
-ENV VSC_VERSION 1.0
+ENV VSC_VERSION 1.1.1
 ENV VSCODE_URL https://vscode-update.azurewebsites.net/latest/linux-x64/stable 
 
 # download the source
