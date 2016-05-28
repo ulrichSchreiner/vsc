@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export GOPATH=$WORKSPACE:$WORKSPACE/vendor
+export GOPATH=$WORKSPACE
 /go/bin/gocode set package-lookup-mode gb
 /go/bin/gocode set autobuild true
 
