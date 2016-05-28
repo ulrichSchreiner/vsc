@@ -1,7 +1,7 @@
 #!/bin/sh
 
 export GOPATH=$WORKSPACE
-/go/bin/gocode set package-lookup-mode gb
+/go/bin/gocode set package-lookup-mode go
 /go/bin/gocode set autobuild true
 
 mkdir -p $WORKSPACE/bin
