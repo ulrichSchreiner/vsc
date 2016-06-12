@@ -2,9 +2,11 @@
     "files.exclude": {
         "**/.git": true,
         "**/.DS_Store": true,
+	".Trash*": true,
         ".vscode":true,
         "bin":true,
         "pkg":true
-    }
+    },
+    "javascript.validate.enable": true
 
 }

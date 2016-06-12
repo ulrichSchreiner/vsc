@@ -80,5 +80,7 @@ RUN mkdir /devhome
 COPY projectsettings.json /devhome/projectsettings.json
 RUN echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
 
+ENV SHELL /bin/bash
+
 VOLUME /work
 ENTRYPOINT [ "/usr/local/bin/startup.sh" ]
