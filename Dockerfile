@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
     unzip \
     openssh-client \
     xdg-utils \
+    xz-utils \
     libgtk2.0-0 \
     libgconf-2-4 \
     libasound2 \
@@ -62,14 +63,12 @@ RUN /usr/local/go/bin/go get \
 
 RUN curl -o /usr/bin/gosu -sSL "https://github.com/tianon/gosu/releases/download/1.7/gosu-$(dpkg --print-architecture)" && chmod +x /usr/bin/gosu
 
-ENV VSC_VERSION 1.2
+ENV VSC_VERSION 1.2.1
 ENV VSCODE_URL https://vscode-update.azurewebsites.net/latest/linux-x64/stable 
 
 # download the source
-RUN curl -sSL ${VSCODE_URL} -o /tmp/vs.zip \
-        && unzip /tmp/vs.zip -d /usr/src/ \
-        && rm -rf /tmp/vs.zip \
-        && ln -snf /usr/src/VSCode-linux-x64/Code /usr/local/bin/code
+RUN curl -sSL ${VSCODE_URL} | tar -C /usr/local -Jx  \
+        && ln -snf /usr/local/VSCode-linux-x64/Code /usr/local/bin/code
 
 RUN ln -sf /go/bin/* /usr/bin/
 RUN ln -sf /usr/bin/nodejs /usr/bin/node

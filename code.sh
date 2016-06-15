@@ -28,4 +28,4 @@ else
     npm run vscode:prepublish
 fi
 
-/usr/src/VSCode-linux-x64/code $WORKSPACE
+/usr/local/VSCode-linux-x64/code $WORKSPACE
