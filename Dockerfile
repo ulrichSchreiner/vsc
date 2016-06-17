@@ -5,6 +5,7 @@ MAINTAINER Ulrich Schreiner <ulrich.schreiner@gmail.com>
 RUN apt-get update && apt-get install -y \
     apt-transport-https \
     ca-certificates \
+    chromium-browser \
     curl \
     git \
     gcc \
@@ -63,12 +64,12 @@ RUN /usr/local/go/bin/go get \
 
 RUN curl -o /usr/bin/gosu -sSL "https://github.com/tianon/gosu/releases/download/1.7/gosu-$(dpkg --print-architecture)" && chmod +x /usr/bin/gosu
 
-ENV VSC_VERSION 1.2.1
-ENV VSCODE_URL https://vscode-update.azurewebsites.net/latest/linux-x64/stable 
+ENV VSC_VERSION=1.2.1 
 
 # download the source
-RUN curl -sSL ${VSCODE_URL} | tar -C /usr/local -Jx  \
-        && ln -snf /usr/local/VSCode-linux-x64/Code /usr/local/bin/code
+RUN curl -sSL https://vscode-update.azurewebsites.net/${VSC_VERSION}/linux-deb-x64/stable > /tmp/code.deb \
+	&& dpkg -i /tmp/code.deb \
+	&& rm -rf /tmp/code.deb 
 
 RUN ln -sf /go/bin/* /usr/bin/
 RUN ln -sf /usr/bin/nodejs /usr/bin/node

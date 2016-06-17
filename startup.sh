@@ -6,14 +6,11 @@ groupadd -g $HOSTGROUPID $HOSTGROUP
 useradd $HOSTUSER -u $HOSTUSERID -g $HOSTGROUP -G video -M -d /devhome
 chown -R $HOSTUSER:$HOSTGROUP /devhome
 
-if [ "$1" == "cleanconfig" ]; then
-  echo Clean configuration in /config/vsc
-  rm -rf /config/vsc
+if [ ! -d "/config/vscode" ]; then
+  gosu $HOSTUSER bash -c "mkdir -p /config/vscode/.config/Code/User /config/vscode/.vscode/extensions"
 fi
 
-if [ ! -d "/config/vsc" ]; then
-  gosu $HOSTUSER bash -c "mkdir -p /config/vsc"
-fi
-ln -s /config/vsc /devhome/.config
+ln -s /config/vscode/.config /devhome/.config
+ln -s /config/vscode/.vscode /devhome/.vscode
 
-screen gosu $HOSTUSER dbus-launch /usr/local/bin/code.sh "$@"
+gosu $HOSTUSER /usr/local/bin/code.sh "$@"
