@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
     apt-transport-https \
     ca-certificates \
     chromium-browser \
+    dbus \
     curl \
     git \
     gcc \
@@ -21,7 +22,8 @@ RUN apt-get update && apt-get install -y \
     libnotify-bin \
     libxtst6 \
     libnss3 \
-    --no-install-recommends
+    --no-install-recommends \
+    && dbus-uuidgen  >/etc/machine-id
 
 RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
 RUN echo 'deb https://deb.nodesource.com/node_5.x vivid main' > /etc/apt/sources.list.d/nodesource.list

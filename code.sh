@@ -14,4 +14,4 @@ fi
 code --install-extension lukehoban.Go
 code --install-extension haaaad.ansible
 
-/usr/bin/code -w $WORKSPACE
+/usr/bin/code --verbose -w $WORKSPACE
