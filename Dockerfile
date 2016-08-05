@@ -64,7 +64,7 @@ RUN curl https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.g
     && ln -sf /go/bin/* /usr/bin/ \
     && ln -sf /usr/bin/nodejs /usr/bin/node
 
-ENV VSC_VERSION=1.3.1
+ENV VSC_VERSION=1.4.0
 
 # download the deb package
 RUN curl -sSL https://vscode-update.azurewebsites.net/${VSC_VERSION}/linux-deb-x64/stable > /tmp/code.deb \
