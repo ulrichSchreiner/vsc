@@ -63,6 +63,7 @@ RUN curl https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.g
     && curl -o /usr/bin/gosu -sSL "https://github.com/tianon/gosu/releases/download/1.7/gosu-$(dpkg --print-architecture)" \
     && chmod +x /usr/bin/gosu \
     && ln -sf /go/bin/* /usr/bin/ \
+    && rm -rf /go/pkg/* && rm -rf /go/src/* \
     && ln -sf /usr/bin/nodejs /usr/bin/node
 
 ENV VSC_VERSION=1.5.3
