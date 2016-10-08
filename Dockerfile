@@ -71,15 +71,15 @@ ENV VSC_VERSION=1.5.3
 # download the deb package
 RUN curl -sSL https://vscode-update.azurewebsites.net/${VSC_VERSION}/linux-deb-x64/stable > /tmp/code.deb \
 	&& dpkg -i /tmp/code.deb \
-	&& rm -rf /tmp/code.deb 
+	&& rm -rf /tmp/code.deb \
+	&& mkdir /devhome \
+	&& apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY startup.sh /usr/local/bin/startup.sh
 COPY code.sh /usr/local/bin/code.sh
-RUN mkdir /devhome
 COPY projectsettings.json /devhome/projectsettings.json
 RUN echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
 
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 ENV SHELL /bin/bash
 VOLUME /work
 ENTRYPOINT [ "/usr/local/bin/startup.sh" ]
