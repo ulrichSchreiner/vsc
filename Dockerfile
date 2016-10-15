@@ -45,6 +45,7 @@ RUN curl https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.g
        github.com/tpng/gopkgs \
        github.com/newhook/go-symbols \
        github.com/constabulary/gb/... \
+       github.com/cweill/gotests/... \
        golang.org/x/tools/cmd/goimports \
        golang.org/x/tools/cmd/gorename \
        golang.org/x/tools/cmd/guru/serial \
