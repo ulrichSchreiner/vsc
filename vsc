@@ -12,6 +12,8 @@ docker run -it --rm \
     -e DISPLAY=unix$DISPLAY \
     -v $HOME/.gitconfig:/devhome/.gitconfig \
     -v $SSH_AUTH_SOCK:/ssh-agent --env SSH_AUTH_SOCK=/ssh-agent \
+    -v /var/run/dbus:/var/run/dbus \
+    -e XAUTHORITY=/.XAUTHORITY -v $XAUTHORITY:/.XAUTHORITY \
     --device /dev/dri \
     -e LANG=$LANG \
     -e HOSTUSER=`id -un` \

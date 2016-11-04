@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:16.10
 MAINTAINER Ulrich Schreiner <ulrich.schreiner@gmail.com>
 
 
@@ -7,9 +7,11 @@ RUN apt-get update && apt-get install -y \
     ca-certificates \
     chromium-browser \
     dbus \
+    dbus-x11 \
     curl \
     git \
     gcc \
+    kmod \
     mercurial \
     wget \
     unzip \
@@ -22,11 +24,12 @@ RUN apt-get update && apt-get install -y \
     libnotify-bin \
     libxtst6 \
     libnss3 \
+    libglu1-mesa \
     --no-install-recommends \
     && dbus-uuidgen  >/etc/machine-id
 
 RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
-RUN echo 'deb https://deb.nodesource.com/node_5.x vivid main' > /etc/apt/sources.list.d/nodesource.list
+RUN echo 'deb https://deb.nodesource.com/node_7.x yakkety main' > /etc/apt/sources.list.d/nodesource.list
 RUN apt-get update && apt-get install -y nodejs --no-install-recommends
 
 ENV GO_VERSION=1.7.3 \
@@ -67,7 +70,7 @@ RUN curl https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.g
     && rm -rf /go/pkg/* && rm -rf /go/src/* \
     && ln -sf /usr/bin/nodejs /usr/bin/node
 
-ENV VSC_VERSION=1.6.1
+ENV VSC_VERSION=1.7.1
 
 # download the deb package
 RUN curl -sSL https://vscode-update.azurewebsites.net/${VSC_VERSION}/linux-deb-x64/stable > /tmp/code.deb \

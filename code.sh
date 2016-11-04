@@ -1,6 +1,8 @@
 #!/bin/sh
 
 export GOPATH=$WORKSPACE
+export XAUTHORITY=/.XAUTHORITY
+
 /go/bin/gocode set package-lookup-mode go
 /go/bin/gocode set autobuild true
 
