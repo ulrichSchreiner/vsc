@@ -25,8 +25,7 @@ RUN apt-get update && apt-get install -y \
     libxtst6 \
     libnss3 \
     libglu1-mesa \
-    --no-install-recommends \
-    && dbus-uuidgen  >/etc/machine-id
+    --no-install-recommends 
 
 RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
 RUN echo 'deb https://deb.nodesource.com/node_7.x yakkety main' > /etc/apt/sources.list.d/nodesource.list
