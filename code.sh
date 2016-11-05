@@ -16,5 +16,6 @@ fi
 code --install-extension lukehoban.Go
 code --install-extension haaaad.ansible
 code --install-extension donjayamanne.githistory
+code --install-extension PeterJausovec.vscode-docker 
 
 /usr/bin/code --verbose -w $WORKSPACE
