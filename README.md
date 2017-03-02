@@ -48,6 +48,7 @@ _vsc() {
       --privileged \
       -v /tmp/.X11-unix:/tmp/.X11-unix  \
       -v `pwd`:`pwd` \
+      -w `pwd` \
       -v $HOME/.config:/config \
       -e DISPLAY=unix$DISPLAY \
       -v $HOME/.gitconfig:/devhome/.gitconfig \
