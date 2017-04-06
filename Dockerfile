@@ -1,5 +1,5 @@
 FROM ubuntu:16.10
-MAINTAINER Ulrich Schreiner <ulrich.schreiner@gmail.com>
+LABEL maintainer "ulrich.schreiner@gmail.com"
 
 
 RUN apt-get update && apt-get install -y \
@@ -25,6 +25,7 @@ RUN apt-get update && apt-get install -y \
     libxtst6 \
     libnss3 \
     libglu1-mesa \
+    libxkbfile1 \
     --no-install-recommends 
 
 RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
@@ -69,7 +70,7 @@ RUN curl https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.g
     && rm -rf /go/pkg/* && rm -rf /go/src/* \
     && ln -sf /usr/bin/nodejs /usr/bin/node
 
-ENV VSC_VERSION=1.10.2
+ENV VSC_VERSION=1.11.0
 
 # download the deb package
 RUN curl -sSL https://vscode-update.azurewebsites.net/${VSC_VERSION}/linux-deb-x64/stable > /tmp/code.deb \
