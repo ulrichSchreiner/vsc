@@ -32,38 +32,32 @@ RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
 RUN echo 'deb https://deb.nodesource.com/node_7.x yakkety main' > /etc/apt/sources.list.d/nodesource.list
 RUN apt-get update && apt-get install -y nodejs --no-install-recommends
 
-ENV GO_VERSION=1.8 \
+ENV GO_VERSION=1.8.1 \
     GOPATH=/go
 RUN curl https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz |tar -C /usr/local -xz \
     && ln -sf /usr/local/go/bin/* /usr/bin/ \
     && mkdir /go && cd /go && mkdir src pkg bin \
     && echo "PATH=/go/bin:$PATH" > /etc/profile.d/go.sh \
     && /usr/local/go/bin/go get \
-       github.com/nsf/gocode \
-       github.com/derekparker/delve/cmd/dlv \
-       github.com/golang/lint/golint \
-       github.com/rogpeppe/godef \
-       github.com/lukehoban/go-outline \
-       sourcegraph.com/sqs/goreturns \
-       github.com/tpng/gopkgs \
-       github.com/newhook/go-symbols \
-       github.com/constabulary/gb/... \
-       github.com/cweill/gotests/... \
-       golang.org/x/tools/cmd/goimports \
-       golang.org/x/tools/cmd/gorename \
-       golang.org/x/tools/cmd/guru/serial \
-       golang.org/x/tools/go/ast/astutil \
-       golang.org/x/tools/go/buildutil \
-       golang.org/x/tools/go/types/typeutil \
-       golang.org/x/tools/container/intsets \
-       golang.org/x/tools/refactor/importgraph \
-       golang.org/x/tools/go/ssa \
-       golang.org/x/tools/go/loader \
-       golang.org/x/tools/go/callgraph \
-       golang.org/x/tools/go/ssa/ssautil \
-       golang.org/x/tools/go/pointer \
-       golang.org/x/tools/go/callgraph/static \
-       golang.org/x/tools/cmd/guru \
+	github.com/derekparker/delve/cmd/dlv \
+	github.com/fatih/gomodifytags \
+	github.com/tylerb/gotype-live \
+	golang.org/x/tools/cmd/goimports \
+	github.com/sourcegraph/go-langserver \
+	github.com/alecthomas/gometalinter \
+	github.com/nsf/gocode \
+	github.com/rogpeppe/godef \
+	github.com/zmb3/gogetdoc \
+	github.com/golang/lint/golint \
+	github.com/lukehoban/go-outline \
+	sourcegraph.com/sqs/goreturns \
+	golang.org/x/tools/cmd/gorename \
+	github.com/tpng/gopkgs \
+	github.com/acroca/go-symbols \
+	golang.org/x/tools/cmd/guru \
+	github.com/cweill/gotests/... \
+	golang.org/x/tools/cmd/godoc \
+    && /go/bin/gometalinter --install \
     && curl -o /usr/bin/gosu -sSL "https://github.com/tianon/gosu/releases/download/1.7/gosu-$(dpkg --print-architecture)" \
     && chmod +x /usr/bin/gosu \
     && ln -sf /go/bin/* /usr/bin/ \
