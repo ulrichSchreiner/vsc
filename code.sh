@@ -8,9 +8,13 @@ export XAUTHORITY=/.XAUTHORITY
 
 mkdir -p $WORKSPACE/bin
 
+WORKDIR=""
+
 mkdir -p $WORKSPACE/.vscode
 if [ ! -f $WORKSPACE/.vscode/settings.json ]; then
     cp /devhome/projectsettings.json $WORKSPACE/.vscode/settings.json
+    # initialize workspace, so start vscode with this folder
+    WORKDIR="-w $WORKSPACE"
 fi
 
 code --install-extension lukehoban.Go
@@ -18,4 +22,5 @@ code --install-extension haaaad.ansible
 code --install-extension donjayamanne.githistory
 code --install-extension PeterJausovec.vscode-docker 
 
-/usr/bin/code --verbose -n -p -w $WORKSPACE
+cd $WORKSPACE
+/usr/bin/code --verbose -p $WORKDIR
