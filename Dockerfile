@@ -1,4 +1,4 @@
-FROM ubuntu:16.10
+FROM ubuntu:17.04
 LABEL maintainer "ulrich.schreiner@gmail.com"
 
 
@@ -6,11 +6,11 @@ RUN apt-get update && apt-get install -y \
     apt-transport-https \
     ca-certificates \
     chromium-browser \
+    curl \
     dbus \
     dbus-x11 \
-    curl \
-    git \
     gcc \
+    git \
     kmod \
     mercurial \
     wget \
@@ -27,15 +27,17 @@ RUN apt-get update && apt-get install -y \
     libnss3 \
     libglu1-mesa \
     libxkbfile1 \
-    --no-install-recommends 
-
-RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
-RUN echo 'deb https://deb.nodesource.com/node_7.x yakkety main' > /etc/apt/sources.list.d/nodesource.list
-RUN apt-get update && apt-get install -y nodejs --no-install-recommends
+    locales \
+    --no-install-recommends && rm -rf /var/lib/apt/*
 
 ENV GO_VERSION=1.8.1 \
-    GOPATH=/go
-RUN curl https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz |tar -C /usr/local -xz \
+    GOPATH=/go \
+    VSC_VERSION=1.11.2
+
+RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
+    && echo 'deb https://deb.nodesource.com/node_7.x yakkety main' > /etc/apt/sources.list.d/nodesource.list \
+    && apt-get update && apt-get install -y nodejs --no-install-recommends \
+    && curl https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz |tar -C /usr/local -xz \
     && ln -sf /usr/local/go/bin/* /usr/bin/ \
     && mkdir /go && cd /go && mkdir src pkg bin \
     && echo "PATH=/go/bin:$PATH" > /etc/profile.d/go.sh \
@@ -63,16 +65,12 @@ RUN curl https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.g
     && chmod +x /usr/bin/gosu \
     && ln -sf /go/bin/* /usr/bin/ \
     && rm -rf /go/pkg/* && rm -rf /go/src/* \
-    && ln -sf /usr/bin/nodejs /usr/bin/node
-
-ENV VSC_VERSION=1.11.2
-
-# download the deb package
-RUN curl -sSL https://vscode-update.azurewebsites.net/${VSC_VERSION}/linux-deb-x64/stable > /tmp/code.deb \
-	&& dpkg -i /tmp/code.deb \
-	&& rm -rf /tmp/code.deb \
-	&& mkdir /devhome \
-	&& apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    && ln -sf /usr/bin/nodejs /usr/bin/node \
+    && curl -sSL https://vscode-update.azurewebsites.net/${VSC_VERSION}/linux-deb-x64/stable > /tmp/code.deb \
+    && dpkg -i /tmp/code.deb \
+    && rm -rf /tmp/code.deb \
+    && mkdir /devhome \
+    && apt-get clean && rm -rf /var/lib/apt/* /tmp/* /var/tmp/*
 
 COPY startup.sh /usr/local/bin/startup.sh
 COPY code.sh /usr/local/bin/code.sh
