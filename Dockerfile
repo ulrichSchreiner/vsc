@@ -18,6 +18,7 @@ RUN apt-get update && apt-get install -y \
     openssh-client \
     xdg-utils \
     xz-utils \
+    libc6-dev \
     libgtk2.0-0 \
     libgconf-2-4 \
     libasound2 \
