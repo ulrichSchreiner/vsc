@@ -70,6 +70,8 @@ RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
     && dpkg -i /tmp/code.deb \
     && rm -rf /tmp/code.deb \
     && mkdir /devhome \
+    && mkdir /usr/local/share/fonts/firacode \
+    && curl -sSL https://github.com/tonsky/FiraCode/raw/master/distr/ttf/FiraCode-Regular.ttf -o /usr/local/share/fonts/firacode/FiraCode-Regular.ttf \
     && apt-get clean && rm -rf /var/lib/apt/* /tmp/* /var/tmp/*
 
 COPY startup.sh /usr/local/bin/startup.sh
