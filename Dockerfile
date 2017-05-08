@@ -52,7 +52,7 @@ RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
 	github.com/rogpeppe/godef \
 	github.com/zmb3/gogetdoc \
 	github.com/golang/lint/golint \
-	github.com/lukehoban/go-outline \
+        github.com/ramya-rao-a/go-outline \
 	sourcegraph.com/sqs/goreturns \
 	golang.org/x/tools/cmd/gorename \
 	github.com/tpng/gopkgs \
