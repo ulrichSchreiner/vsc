@@ -30,7 +30,7 @@ RUN apt-get update && apt-get install -y \
     locales \
     --no-install-recommends && rm -rf /var/lib/apt/*
 
-ENV GO_VERSION=1.8.2 \
+ENV GO_VERSION=1.8.3 \
     GOPATH=/go \
     VSC_VERSION=1.12.2
 
