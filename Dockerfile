@@ -32,7 +32,7 @@ RUN apt-get update && apt-get install -y \
 
 ENV GO_VERSION=1.8.3 \
     GOPATH=/go \
-    VSC_VERSION=1.12.2
+    VSC_VERSION=1.13.0
 
 RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
     && echo 'deb https://deb.nodesource.com/node_7.x yakkety main' > /etc/apt/sources.list.d/nodesource.list \
