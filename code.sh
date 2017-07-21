@@ -6,8 +6,6 @@ export XAUTHORITY=/.XAUTHORITY
 /go/bin/gocode set package-lookup-mode go
 /go/bin/gocode set autobuild true
 
-mkdir -p $WORKSPACE/bin
-
 WORKDIR=""
 
 mkdir -p $WORKSPACE/.vscode
