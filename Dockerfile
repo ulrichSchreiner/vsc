@@ -61,6 +61,7 @@ RUN curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
 	golang.org/x/tools/cmd/guru \
 	github.com/cweill/gotests/... \
 	golang.org/x/tools/cmd/godoc \
+	honnef.co/go/tools/cmd/megacheck \
     && /go/bin/gometalinter --install \
     && curl -o /usr/bin/gosu -sSL "https://github.com/tianon/gosu/releases/download/1.7/gosu-$(dpkg --print-architecture)" \
     && chmod +x /usr/bin/gosu \
