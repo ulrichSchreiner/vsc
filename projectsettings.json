@@ -10,5 +10,6 @@
     "javascript.validate.enable": true,
     "editor.fontLigatures": true,
     "terminal.integrated.fontLigatures": true,
-    "editor.fontFamily": " 'Fira Code', 'Droid Sans Mono', 'Courier New', monospace, 'Droid Sans Fallback'"
+    "editor.fontFamily": " 'Fira Code', 'Droid Sans Mono', 'Courier New', monospace, 'Droid Sans Fallback'",
+    "go.inferGopath": true
 }
