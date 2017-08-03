@@ -1,6 +1,5 @@
 #!/bin/sh
 
-export GOPATH=$WORKSPACE
 export XAUTHORITY=/.XAUTHORITY
 
 /go/bin/gocode set package-lookup-mode go
@@ -20,5 +19,6 @@ code --install-extension haaaad.ansible
 code --install-extension donjayamanne.githistory
 code --install-extension PeterJausovec.vscode-docker 
 
+unset GOPATH
 cd $WORKSPACE
 /usr/bin/code --verbose -p $WORKDIR
