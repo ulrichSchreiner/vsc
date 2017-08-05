@@ -14,6 +14,8 @@ ENV GO_VERSION=1.8.3 \
     GOPATH=/go
 
 RUN curl -sSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | apt-key add - \
+    && curl -sSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
+    && echo 'deb https://deb.nodesource.com/node_7.x yakkety main' > /etc/apt/sources.list.d/nodesource.list \
     && echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list \
     && curl https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz |tar -C /usr/local -xz \
     && ln -sf /usr/local/go/bin/* /usr/bin/ \
@@ -59,6 +61,7 @@ RUN apt-get update && apt-get install -y \
     dbus-x11 \
     gcc \
     kmod \
+    nodejs \
     wget \
     unzip \
     openssh-client \
