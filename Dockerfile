@@ -51,7 +51,7 @@ RUN curl -sSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor 
     && mkdir -p /usr/local/share/fonts/firacode \
     && curl -sSL https://github.com/tonsky/FiraCode/raw/master/distr/ttf/FiraCode-Regular.ttf -o /usr/local/share/fonts/firacode/FiraCode-Regular.ttf 
 
-ENV VSC_VERSION=1.14.2
+ENV VSC_VERSION=1.15.0
 
 RUN apt search code
 
