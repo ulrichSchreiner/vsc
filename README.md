@@ -53,6 +53,7 @@ _vsc() {
       -e DISPLAY=unix$DISPLAY \
       -v $HOME/.gitconfig:/devhome/.gitconfig \
       -v $SSH_AUTH_SOCK:/ssh-agent --env SSH_AUTH_SOCK=/ssh-agent \
+      -v $HOME/.git-credential-cache/socket:/devhome/.git-credential-cache/socket \
       --device /dev/dri \
       -e LANG=$LANG \
       -e HOSTUSER=`id -un` \
