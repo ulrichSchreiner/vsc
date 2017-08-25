@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
 	gnupg \
 	--no-install-recommends
 
-ENV GO_VERSION=1.8.3 \
+ENV GO_VERSION=1.9 \
     GOPATH=/go
 
 RUN curl -sSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | apt-key add - \
