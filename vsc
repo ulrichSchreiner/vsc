@@ -15,6 +15,7 @@ docker run -it --rm \
     -v $HOME/.git-credential-cache/socket:/devhome/.git-credential-cache/socket \
     -v /var/run/dbus:/var/run/dbus:ro \
     -v /etc/machine-id:/etc/machine-id:ro \
+    -v /run/docker.sock:/run/docker.sock:ro \
     -e XAUTHORITY=/.XAUTHORITY -v $XAUTHORITY:/.XAUTHORITY \
     --device /dev/dri \
     -e LANG=$LANG \

@@ -7,6 +7,13 @@ useradd $HOSTUSER -u $HOSTUSERID -g $HOSTGROUP -G video -M -d /devhome -s /usr/b
 if [ ! -f /devhome/.zshrc ]; then
   cp /devhome/zshrc /devhome/.zshrc
 fi
+
+if [ -S /run/docker.sock ]; then
+  dgroup=`stat /run/docker.sock -c "%g"`
+  groupadd -g $dgroup docker
+  usermod -a -G docker $HOSTUSER
+fi
+
 chown -R $HOSTUSER:$HOSTGROUP /devhome
 
 if [ ! -d "/config/vscode" ]; then

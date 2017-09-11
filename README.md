@@ -54,6 +54,7 @@ _vsc() {
       -v $HOME/.gitconfig:/devhome/.gitconfig \
       -v $SSH_AUTH_SOCK:/ssh-agent --env SSH_AUTH_SOCK=/ssh-agent \
       -v $HOME/.git-credential-cache/socket:/devhome/.git-credential-cache/socket \
+      -v /run/docker.sock:/run/docker.sock:ro \
       --device /dev/dri \
       -e LANG=$LANG \
       -e HOSTUSER=`id -un` \

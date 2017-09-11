@@ -14,12 +14,14 @@ RUN apt-get update && apt-get install -y \
 	--no-install-recommends
 
 ENV GO_VERSION=1.9 \
+    DOCKER_CLIENT=17.07.0-ce \
     GOPATH=/go
 
 RUN curl -sSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | apt-key add - \
     && curl -sSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
     && echo 'deb https://deb.nodesource.com/node_7.x yakkety main' > /etc/apt/sources.list.d/nodesource.list \
     && echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list \
+    && curl https://download.docker.com/linux/static/edge/x86_64/docker-${DOCKER_CLIENT}.tgz | tar -C /usr/local/bin -xz --strip 1 \
     && curl https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz |tar -C /usr/local -xz \
     && ln -sf /usr/local/go/bin/* /usr/bin/ \
     && mkdir /go && cd /go && mkdir src pkg bin \
