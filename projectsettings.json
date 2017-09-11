@@ -11,5 +11,6 @@
     "editor.fontLigatures": true,
     "terminal.integrated.fontLigatures": true,
     "editor.fontFamily": " 'Fira Code', 'Droid Sans Mono', 'Courier New', monospace, 'Droid Sans Fallback'",
-    "go.inferGopath": true
+    "go.inferGopath": true,
+    "terminal.integrated.setLocaleVariables": true
 }

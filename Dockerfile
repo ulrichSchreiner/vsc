@@ -6,8 +6,11 @@ RUN apt-get update && apt-get install -y \
 	ca-certificates \
 	curl \
 	git \
-	mercurial \
 	gnupg \
+	less \
+	mercurial \
+	vim \
+	zsh \
 	--no-install-recommends
 
 ENV GO_VERSION=1.9 \
@@ -80,11 +83,15 @@ RUN apt-get update && apt-get install -y \
     code=$VSC_VERSION-* \
     --no-install-recommends && apt-get clean && rm -rf /var/lib/apt/* /tmp/* /var/tmp/* 
 
+RUN git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git /devhome/.oh-my-zsh
+
 COPY startup.sh /usr/local/bin/startup.sh
 COPY code.sh /usr/local/bin/code.sh
 COPY projectsettings.json /devhome/projectsettings.json
+COPY zshrc /devhome/zshrc
 RUN echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
 
-ENV SHELL /bin/bash
+ENV SHELL /usr/bin/zsh
 VOLUME /work
+
 ENTRYPOINT [ "/usr/local/bin/startup.sh" ]
