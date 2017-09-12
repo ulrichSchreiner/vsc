@@ -12,7 +12,7 @@ docker run -it --rm \
     -e DISPLAY=unix$DISPLAY \
     -v $HOME/.gitconfig:/devhome/.gitconfig \
     -v $SSH_AUTH_SOCK:/ssh-agent --env SSH_AUTH_SOCK=/ssh-agent \
-    -v $HOME/.git-credential-cache/socket:/devhome/.git-credential-cache/socket \
+    -v $HOME/.git-credential-cache:/devhome/.git-credential-cache \
     -v /var/run/dbus:/var/run/dbus:ro \
     -v /etc/machine-id:/etc/machine-id:ro \
     -v /run/docker.sock:/run/docker.sock:ro \
