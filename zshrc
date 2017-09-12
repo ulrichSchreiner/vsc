@@ -1,5 +1,5 @@
 export ZSH=~/.oh-my-zsh
-ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
 DISABLE_AUTO_UPDATE="true"
 plugins=(git gitfast docker go git-extras)
 source $ZSH/oh-my-zsh.sh

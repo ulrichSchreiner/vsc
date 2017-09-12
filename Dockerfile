@@ -86,7 +86,11 @@ RUN apt-get update && apt-get install -y \
     --no-install-recommends && apt-get clean && rm -rf /var/lib/apt/* /tmp/* /var/tmp/* 
 
 RUN git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git /devhome/.oh-my-zsh
-
+RUN cd /devhome && git clone --depth=1 https://github.com/powerline/fonts.git \
+    && cd /devhome/fonts \
+    && HOME=/devhome ./install.sh \
+    && cd .. \
+    && rm -rf fonts
 COPY startup.sh /usr/local/bin/startup.sh
 COPY code.sh /usr/local/bin/code.sh
 COPY projectsettings.json /devhome/projectsettings.json
