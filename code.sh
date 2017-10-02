@@ -21,6 +21,6 @@ code --install-extension PeterJausovec.vscode-docker
 code --install-extension waderyan.gitblame
 code --install-extension eamodio.gitlens
 
-unset GOPATH
+export GOPATH=$WORKSPACE
 cd $WORKSPACE
 /usr/bin/code --verbose -p $WORKDIR
