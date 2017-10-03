@@ -18,6 +18,7 @@ docker run -it --rm \
     -v /run/docker.sock:/run/docker.sock:ro \
     -e XAUTHORITY=/.XAUTHORITY -v $XAUTHORITY:/.XAUTHORITY \
     --device /dev/dri \
+    --device /dev/snd \
     -e LANG=$LANG \
     -e HOSTUSER=`id -un` \
     -e HOSTGROUP=`id -gn` \
