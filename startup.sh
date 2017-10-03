@@ -3,7 +3,7 @@
 locale-gen $LANG
 
 groupadd -g $HOSTGROUPID $HOSTGROUP
-useradd $HOSTUSER -u $HOSTUSERID -g $HOSTGROUP -G video -M -d /devhome -s /usr/bin/zsh
+useradd $HOSTUSER -u $HOSTUSERID -g $HOSTGROUP -G audio,video -M -d /devhome -s /usr/bin/zsh
 if [ ! -f /devhome/.zshrc ]; then
   cp /devhome/zshrc /devhome/.zshrc
 fi
