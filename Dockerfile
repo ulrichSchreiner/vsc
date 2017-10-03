@@ -1,21 +1,42 @@
 FROM ubuntu:17.04
 LABEL maintainer "ulrich.schreiner@gmail.com"
 
+ENV GO_VERSION=1.9 \
+    DOCKER_CLIENT=17.09.0-ce \
+    GOPATH=/go \
+    VSC_VERSION=1.16.1
+
 RUN apt-get update && apt-get install -y \
 	apt-transport-https \
 	ca-certificates \
+	chromium-browser \
 	curl \
+	dbus \
+	dbus-x11 \
+	gcc \
 	git \
 	gnupg \
+	kmod \
 	less \
+	libc6-dev \
+	libgtk2.0-0 \
+	libgconf-2-4 \
+	libasound2 \
+	libnotify-bin \
+	libxtst6 \
+	libnss3 \
+	libglu1-mesa \
+	libxkbfile1 \
+	locales \
 	mercurial \
+	openssh-client \
+	unzip \
 	vim \
+	wget \
+	xdg-utils \
+	xz-utils \
 	zsh \
 	--no-install-recommends
-
-ENV GO_VERSION=1.9 \
-    DOCKER_CLIENT=17.07.0-ce \
-    GOPATH=/go
 
 RUN curl -sSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | apt-key add - \
     && curl -sSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
@@ -41,7 +62,7 @@ RUN curl -sSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor 
         github.com/josharian/impl \
         sourcegraph.com/sqs/goreturns \
         golang.org/x/tools/cmd/gorename \
-        github.com/tpng/gopkgs \
+        github.com/uudashr/gopkgs/cmd/gopkgs \
         github.com/acroca/go-symbols \
         golang.org/x/tools/cmd/guru \
         github.com/cweill/gotests/... \
@@ -56,32 +77,8 @@ RUN curl -sSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor 
     && mkdir -p /usr/local/share/fonts/firacode \
     && curl -sSL https://github.com/tonsky/FiraCode/raw/master/distr/ttf/FiraCode-Regular.ttf -o /usr/local/share/fonts/firacode/FiraCode-Regular.ttf 
 
-ENV VSC_VERSION=1.16.1
-
-RUN apt search code
-
 RUN apt-get update && apt-get install -y \
-    chromium-browser \
-    dbus \
-    dbus-x11 \
-    gcc \
-    kmod \
     nodejs \
-    wget \
-    unzip \
-    openssh-client \
-    xdg-utils \
-    xz-utils \
-    libc6-dev \
-    libgtk2.0-0 \
-    libgconf-2-4 \
-    libasound2 \
-    libnotify-bin \
-    libxtst6 \
-    libnss3 \
-    libglu1-mesa \
-    libxkbfile1 \
-    locales \
     code=$VSC_VERSION-* \
     --no-install-recommends && apt-get clean && rm -rf /var/lib/apt/* /tmp/* /var/tmp/* 
 
