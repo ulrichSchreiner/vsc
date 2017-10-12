@@ -8,6 +8,7 @@ ENV GO_VERSION=1.9.1 \
 
 RUN apt-get update && apt-get install -y \
 	apt-transport-https \
+	build-essential \
 	ca-certificates \
 	chromium-browser \
 	curl \
@@ -35,8 +36,7 @@ RUN apt-get update && apt-get install -y \
 	wget \
 	xdg-utils \
 	xz-utils \
-	zsh \
-	--no-install-recommends
+	zsh 
 
 RUN curl -sSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | apt-key add - \
     && curl -sSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
