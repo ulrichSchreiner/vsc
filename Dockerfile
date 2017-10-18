@@ -4,7 +4,7 @@ LABEL maintainer "ulrich.schreiner@gmail.com"
 ENV GO_VERSION=1.9.1 \
     DOCKER_CLIENT=17.09.0-ce \
     GOPATH=/go \
-    VSC_VERSION=1.17.1
+    VSC_VERSION=1.17.2
 
 RUN apt-get update && apt-get install -y \
 	apt-transport-https \
