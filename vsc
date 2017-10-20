@@ -25,4 +25,5 @@ docker run -it --rm \
     -e HOSTUSERID=`id -u` \
     -e HOSTGROUPID=`id -g` \
     -e WORKSPACE=`pwd` \
+    -e DISABLE_GPU="--disable-gpu" \
     quay.io/ulrichschreiner/vsc "$@"

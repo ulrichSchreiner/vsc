@@ -23,4 +23,4 @@ code --install-extension eamodio.gitlens
 
 export GOPATH=$WORKSPACE
 cd $WORKSPACE
-/usr/bin/code --verbose -p $WORKDIR
+/usr/bin/code --verbose $DISABLE_GPU -p $WORKDIR
