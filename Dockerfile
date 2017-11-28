@@ -55,6 +55,7 @@ RUN curl -sSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor 
         golang.org/x/tools/cmd/goimports \
         github.com/sourcegraph/go-langserver \
         github.com/alecthomas/gometalinter \
+	github.com/haya14busa/goplay/cmd/goplay \
         github.com/nsf/gocode \
         github.com/rogpeppe/godef \
         github.com/zmb3/gogetdoc \
