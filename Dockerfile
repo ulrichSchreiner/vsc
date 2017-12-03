@@ -59,6 +59,7 @@ RUN curl -sSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor 
         github.com/nsf/gocode \
         github.com/rogpeppe/godef \
         github.com/zmb3/gogetdoc \
+	github.com/golang/dep/cmd/dep \
         github.com/golang/lint/golint \
         github.com/ramya-rao-a/go-outline \
         github.com/josharian/impl \
