@@ -5,5 +5,5 @@ plugins=(git gitfast docker go git-extras)
 source $ZSH/oh-my-zsh.sh
 export GIT_PS1_SHOWUPSTREAM="auto"
 unsetopt share_history
-
+eval "$(direnv hook zsh)"
 
