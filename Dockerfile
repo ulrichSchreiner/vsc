@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y \
 	curl \
 	dbus \
 	dbus-x11 \
+	direnv \
 	gcc \
 	git \
 	gnupg \
