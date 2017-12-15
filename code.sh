@@ -10,8 +10,7 @@ WORKDIR=""
 mkdir -p $WORKSPACE/.vscode
 if [ ! -f $WORKSPACE/.vscode/settings.json ]; then
     cp /devhome/projectsettings.json $WORKSPACE/.vscode/settings.json
-    # initialize workspace, so start vscode with this folder
-    WORKDIR="-w $WORKSPACE"
+    WORKDIR="$WORKSPACE"
 fi
 
 code --install-extension lukehoban.Go

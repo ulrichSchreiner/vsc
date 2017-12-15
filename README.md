@@ -67,6 +67,8 @@ _vsc() {
 }
 alias vsc=_vsc
 ```
+Ensure to have the `-it` parameters when starting the container because VSCode needs a terminal!
+
 Note: If you have private repositories where you need your SSH keys, you should have an agent running before starting `vsc` so the agent forwarding of the keys will work.
 
 When using this alias you do not need to clone this repository. `docker` will
