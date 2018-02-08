@@ -1,10 +1,10 @@
 FROM ubuntu:17.10
 LABEL maintainer "ulrich.schreiner@gmail.com"
 
-ENV GO_VERSION=1.9.3 \
+ENV GO_VERSION=1.9.4 \
     DOCKER_CLIENT=17.09.1-ce \
     GOPATH=/go \
-    VSC_VERSION=1.19.3
+    VSC_VERSION=1.20.0
 
 RUN apt-get update && apt-get install -y \
 	apt-transport-https \
