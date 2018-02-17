@@ -4,7 +4,8 @@ LABEL maintainer "ulrich.schreiner@gmail.com"
 ENV GO_VERSION=1.10 \
     DOCKER_CLIENT=17.09.1-ce \
     GOPATH=/go \
-    VSC_VERSION=1.20.1
+    VSC_VERSION=1.20.1 \
+    GOSU_VERSION=1.10
 
 RUN apt-get update && apt-get install -y \
 	apt-transport-https \
@@ -73,7 +74,7 @@ RUN curl -sSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor 
         golang.org/x/tools/cmd/godoc \
         honnef.co/go/tools/cmd/megacheck \
     && /go/bin/gometalinter --install \
-    && curl -o /usr/bin/gosu -sSL "https://github.com/tianon/gosu/releases/download/1.7/gosu-$(dpkg --print-architecture)" \
+    && curl -o /usr/bin/gosu -sSL "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-$(dpkg --print-architecture)" \
     && chmod +x /usr/bin/gosu \
     && ln -sf /go/bin/* /usr/bin/ \
     && rm -rf /go/pkg/* && rm -rf /go/src/* \
