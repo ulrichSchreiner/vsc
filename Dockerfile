@@ -34,6 +34,7 @@ RUN apt-get update && apt-get install -y \
 	locales \
 	mercurial \
 	openssh-client \
+	python-pip \
 	unzip \
 	vim \
 	wget \
@@ -80,7 +81,8 @@ RUN curl -sSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor 
     && rm -rf /go/pkg/* && rm -rf /go/src/* \
     && mkdir /devhome \
     && mkdir -p /usr/local/share/fonts/firacode \
-    && curl -sSL https://github.com/tonsky/FiraCode/raw/master/distr/ttf/FiraCode-Regular.ttf -o /usr/local/share/fonts/firacode/FiraCode-Regular.ttf 
+    && curl -sSL https://github.com/tonsky/FiraCode/raw/master/distr/ttf/FiraCode-Regular.ttf -o /usr/local/share/fonts/firacode/FiraCode-Regular.ttf \
+    && pip install pylint
 
 RUN apt-get update && apt-get install -y \
     nodejs \
