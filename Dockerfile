@@ -51,7 +51,7 @@ RUN curl -sSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor 
     && ln -sf /usr/local/go/bin/* /usr/bin/ \
     && mkdir /go && cd /go && mkdir src pkg bin \
     && echo "PATH=/go/bin:$PATH" > /etc/profile.d/go.sh \
-    && /usr/local/go/bin/go get \
+    && /usr/local/go/bin/go get -u -v \
         github.com/derekparker/delve/cmd/dlv \
         github.com/fatih/gomodifytags \
         github.com/tylerb/gotype-live \
@@ -73,7 +73,8 @@ RUN curl -sSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor 
         golang.org/x/tools/cmd/guru \
         github.com/cweill/gotests/... \
         golang.org/x/tools/cmd/godoc \
-        honnef.co/go/tools/cmd/megacheck \
+        honnef.co/go/tools/... \
+	github.com/davidrjenni/reftools/cmd/fillstruct \
     && /go/bin/gometalinter --install \
     && curl -o /usr/bin/gosu -sSL "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-$(dpkg --print-architecture)" \
     && chmod +x /usr/bin/gosu \
