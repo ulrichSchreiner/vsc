@@ -2,9 +2,9 @@ FROM ubuntu:17.10
 LABEL maintainer "ulrich.schreiner@gmail.com"
 
 ENV GO_VERSION=1.10 \
-    DOCKER_CLIENT=17.09.1-ce \
+    DOCKER_CLIENT=17.12.1-ce \
     GOPATH=/go \
-    VSC_VERSION=1.20.1 \
+    VSC_VERSION=1.21.0 \
     GOSU_VERSION=1.10
 
 RUN apt-get update && apt-get install -y \
