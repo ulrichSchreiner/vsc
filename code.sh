@@ -16,7 +16,7 @@ fi
 code --install-extension lukehoban.Go
 code --install-extension haaaad.ansible
 code --install-extension donjayamanne.githistory
-code --install-extension PeterJausovec.vscode-docker 
+code --install-extension PeterJausovec.vscode-docker
 code --install-extension waderyan.gitblame
 code --install-extension eamodio.gitlens
 

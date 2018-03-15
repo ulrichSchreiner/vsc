@@ -1,10 +1,39 @@
+FROM node:9 as builder
+
+ENV VSCODE=1.21.1
+
+RUN apt -y update && \
+    apt -y install \
+      libx11-dev \
+      libxkbfile-dev \
+      libsecret-1-dev \
+      fakeroot \
+      rpm && \
+    mkdir /work && \
+    cd /work && \
+    git clone --branch $VSCODE https://github.com/Microsoft/vscode.git
+
+WORKDIR /work
+
+RUN cd vscode && \
+    sed -i 's/}$/,\"updateUrl\": \"https:\/\/vscode-update.azurewebsites.net\",\"extensionsGallery\":{\"serviceUrl\": \"https:\/\/marketplace.visualstudio.com\/_apis\/public\/gallery\",\"cacheUrl\": \"https:\/\/vscode.blob.core.windows.net\/gallery\/index",\"itemUrl\": \"https:\/\/marketplace.visualstudio.com\/items\",\"controlUrl\": \"https:\/\/az764295.vo.msecnd.net\/extensions\/marketplace.json\",\"recommendationsUrl\": \"https:\/\/az764295.vo.msecnd.net\/extensions\/workspaceRecommendations.json\"}}/g' product.json && \
+    sed -i 's/Code - OSS/Code/g' product.json && \
+    sed -i 's/code-oss/code/g' product.json && \
+    sed -i 's/.vscode-oss/.vscode/g' product.json && \
+    cat product.json && \
+    yarn && \
+    npm run gulp -- hygiene && \
+    yarn run gulp vscode-linux-x64-min && \
+    yarn run gulp vscode-linux-x64-build-deb
+
+RUN find /work -name "*.deb"
+
 FROM ubuntu:17.10
 LABEL maintainer "ulrich.schreiner@gmail.com"
 
 ENV GO_VERSION=1.10 \
     DOCKER_CLIENT=17.12.1-ce \
     GOPATH=/go \
-    VSC_VERSION=1.21.1 \
     GOSU_VERSION=1.10
 
 RUN apt-get update && apt-get install -y \
@@ -30,7 +59,6 @@ RUN apt-get update && apt-get install -y \
 	libxtst6 \
 	libnss3 \
 	libglu1-mesa \
-        libsecret-1-0 \
 	libxkbfile1 \
 	locales \
 	mercurial \
@@ -44,8 +72,7 @@ RUN apt-get update && apt-get install -y \
 	zsh && \
   apt-get clean && rm -rf /var/lib/apt/*
 
-RUN cd /tmp && wget -r -l1 --no-parent -A "code_${VSC_VERSION}-*.deb" -q https://packages.microsoft.com/repos/vscode/pool/main/c/code/ \
-    && curl -sSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
+RUN curl -sSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
     && echo 'deb https://deb.nodesource.com/node_9.x artful main' > /etc/apt/sources.list.d/nodesource.list \
     && curl https://download.docker.com/linux/static/edge/x86_64/docker-${DOCKER_CLIENT}.tgz | tar -C /usr/local/bin -xz --strip 1 \
     && curl https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz |tar -C /usr/local -xz \
@@ -84,14 +111,15 @@ RUN cd /tmp && wget -r -l1 --no-parent -A "code_${VSC_VERSION}-*.deb" -q https:/
     && mkdir /devhome \
     && mkdir -p /usr/local/share/fonts/firacode \
     && curl -sSL https://github.com/tonsky/FiraCode/raw/master/distr/ttf/FiraCode-Regular.ttf -o /usr/local/share/fonts/firacode/FiraCode-Regular.ttf \
-    && pip install pylint \
-    && apt-get update \
-    && apt-get install -y \
-      nodejs \
-      --no-install-recommends \
-    && apt-get clean \
-    && dpkg -i /tmp/packages.microsoft.com/repos/vscode/pool/main/c/code/code_${VSC_VERSION}*.deb \
-    && rm -rf /var/lib/apt/* /tmp/* /var/tmp/* \
+    && pip install pylint
+
+COPY --from=builder /work/vscode/.build/linux/deb/amd64/deb/*.deb /tmp/
+
+RUN apt-get update && apt-get install -y \
+    nodejs \
+    libsecret-1-0 \
+    --no-install-recommends && apt-get clean && rm -rf /var/lib/apt/* \
+    && dpkg -i /tmp/*.deb && rm -rf /tmp/* /var/tmp/*  \
     && git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git /devhome/.oh-my-zsh \
     && cd /devhome && git clone --depth=1 https://github.com/powerline/fonts.git \
     && cd /devhome/fonts \
