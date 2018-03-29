@@ -1,7 +1,7 @@
 FROM ubuntu:17.10
 LABEL maintainer "ulrich.schreiner@gmail.com"
 
-ENV GO_VERSION=1.10 \
+ENV GO_VERSION=1.10.1 \
     DOCKER_CLIENT=17.12.1-ce \
     GOPATH=/go \
     VSC_VERSION=1.21.1 \
