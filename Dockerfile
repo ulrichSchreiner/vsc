@@ -1,8 +1,8 @@
-FROM ubuntu:17.10
+FROM ubuntu:18.04
 LABEL maintainer "ulrich.schreiner@gmail.com"
 
-ENV GO_VERSION=1.10.1 \
-    DOCKER_CLIENT=17.12.1-ce \
+ENV GO_VERSION=1.10.2 \
+    DOCKER_CLIENT=18.03.0-ce \
     GOPATH=/go \
     VSC_VERSION=1.22.2 \
     GOSU_VERSION=1.10
