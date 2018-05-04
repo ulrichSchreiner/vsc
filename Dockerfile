@@ -4,7 +4,7 @@ LABEL maintainer "ulrich.schreiner@gmail.com"
 ENV GO_VERSION=1.10.2 \
     DOCKER_CLIENT=18.03.0-ce \
     GOPATH=/go \
-    VSC_VERSION=1.22.2 \
+    VSC_VERSION=1.23.0 \
     GOSU_VERSION=1.10
 
 RUN apt-get update && apt-get install -y \
