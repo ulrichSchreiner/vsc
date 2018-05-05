@@ -5,7 +5,7 @@ ENV GO_VERSION=1.10.2 \
     DOCKER_CLIENT=18.03.0-ce \
     GOPATH=/go \
     VSC_VERSION=1.23.0 \
-    GOSU_VERSION=1.10
+    GOSU_VERSION=1.10 
 
 RUN apt-get update && apt-get install -y \
 	apt-transport-https \
@@ -92,6 +92,8 @@ RUN cd /tmp && wget -r -l1 --no-parent -A "code_${VSC_VERSION}-*.deb" -q https:/
     && apt-get clean \
     && dpkg -i /tmp/packages.microsoft.com/repos/vscode/pool/main/c/code/code_${VSC_VERSION}*.deb \
     && rm -rf /var/lib/apt/* /tmp/* /var/tmp/* \
+    && curl -sSL https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl \
+    && chmod +x /usr/local/bin/kubectl \
     && git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git /devhome/.oh-my-zsh \
     && cd /devhome && git clone --depth=1 https://github.com/powerline/fonts.git \
     && cd /devhome/fonts \
