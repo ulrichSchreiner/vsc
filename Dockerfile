@@ -5,7 +5,7 @@ ENV GO_VERSION=1.10.2 \
     DOCKER_CLIENT=18.03.0-ce \
     GOPATH=/go \
     VSC_VERSION=1.23.0 \
-    GOSU_VERSION=1.10 
+    GOSU_VERSION=1.10
 
 RUN apt-get update && apt-get install -y \
 	apt-transport-https \
