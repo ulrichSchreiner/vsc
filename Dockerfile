@@ -15,22 +15,32 @@ RUN apt-get update && apt-get install -y \
 	curl \
 	dbus \
 	dbus-x11 \
+	desktop-file-utils \
 	direnv \
 	gcc \
+	gettext \
 	git \
+	gnome-keyring \
 	gnupg \
 	gnupg2 \
 	kmod \
 	less \
+	libasound2 \
 	libc6-dev \
+	libcurl4 \
 	libgtk2.0-0 \
 	libgconf-2-4 \
-	libasound2 \
+	libicu?? \
+	libkrb5-3 \
 	libnotify-bin \
 	libxtst6 \
 	libnss3 \
 	libglu1-mesa \
         libsecret-1-0 \
+	libssl1.?.? \
+	liblttng-ust0 \
+	libunwind8 \
+	libuuid1 \
 	libxkbfile1 \
 	locales \
 	mercurial \
@@ -41,8 +51,12 @@ RUN apt-get update && apt-get install -y \
 	wget \
 	xdg-utils \
 	xz-utils \
+	zlib1g \
 	zsh && \
   apt-get clean && rm -rf /var/lib/apt/*
+
+RUN wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb \
+    && dpkg -i packages-microsoft-prod.deb
 
 RUN cd /tmp && wget -r -l1 --no-parent -A "code_${VSC_VERSION}-*.deb" -q https://packages.microsoft.com/repos/vscode/pool/main/c/code/ \
     && curl -sSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
