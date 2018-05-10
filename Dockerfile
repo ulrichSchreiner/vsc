@@ -4,6 +4,7 @@ LABEL maintainer "ulrich.schreiner@gmail.com"
 ENV GO_VERSION=1.10.2 \
     DOCKER_CLIENT=18.03.0-ce \
     GOPATH=/go \
+    HELM_VERSION=2.9.0 \
     VSC_VERSION=1.23.0 \
     GOSU_VERSION=1.10
 
@@ -62,6 +63,7 @@ RUN cd /tmp && wget -r -l1 --no-parent -A "code_${VSC_VERSION}-*.deb" -q https:/
     && curl -sSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
     && echo 'deb https://deb.nodesource.com/node_9.x artful main' > /etc/apt/sources.list.d/nodesource.list \
     && curl https://download.docker.com/linux/static/edge/x86_64/docker-${DOCKER_CLIENT}.tgz | tar -C /usr/local/bin -xz --strip 1 \
+    && curl https://storage.googleapis.com/kubernetes-helm/helm-v${HELM_VERSION}-linux-amd64.tar.gz | tar -C /usr/local/bin -xz --strip 1 \
     && curl https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz |tar -C /usr/local -xz \
     && ln -sf /usr/local/go/bin/* /usr/bin/ \
     && mkdir /go && cd /go && mkdir src pkg bin \
