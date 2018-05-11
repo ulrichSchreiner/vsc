@@ -5,6 +5,7 @@
 # in the go-binaries will be correct if the binary is built outside
 
 docker run -it --rm \
+    --ipc=host \
     --privileged \
     -v /tmp/.X11-unix:/tmp/.X11-unix  \
     -v `pwd`:`pwd` \

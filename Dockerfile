@@ -12,12 +12,12 @@ RUN apt-get update && apt-get install -y \
 	apt-transport-https \
 	build-essential \
 	ca-certificates \
-	chromium-browser \
 	curl \
 	dbus \
 	dbus-x11 \
 	desktop-file-utils \
 	direnv \
+	firefox \
 	gcc \
 	gettext \
 	git \
@@ -43,6 +43,7 @@ RUN apt-get update && apt-get install -y \
 	libunwind8 \
 	libuuid1 \
 	libxkbfile1 \
+	libxss1 \
 	locales \
 	mercurial \
 	openssh-client \

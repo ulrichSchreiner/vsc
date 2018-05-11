@@ -45,6 +45,7 @@ You can use the given `vsc` script or you put the following in your `.bashrc`
 _vsc() {
   docker pull quay.io/ulrichschreiner/vsc
   docker run -it --rm \
+      --ipc=host \
       --privileged \
       -v /tmp/.X11-unix:/tmp/.X11-unix  \
       -v `pwd`:`pwd` \
