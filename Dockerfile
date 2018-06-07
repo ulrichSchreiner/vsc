@@ -2,9 +2,9 @@ FROM ubuntu:18.04
 LABEL maintainer "ulrich.schreiner@gmail.com"
 
 ENV GO_VERSION=1.10.2 \
-    DOCKER_CLIENT=18.03.0-ce \
+    DOCKER_CLIENT=18.03.1-ce \
     GOPATH=/go \
-    HELM_VERSION=2.9.0 \
+    HELM_VERSION=2.9.1 \
     VSC_VERSION=1.24.0 \
     GOSU_VERSION=1.10
 
@@ -62,7 +62,7 @@ RUN wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsof
 
 RUN cd /tmp && wget -r -l1 --no-parent -A "code_${VSC_VERSION}-*.deb" -q https://packages.microsoft.com/repos/vscode/pool/main/c/code/ \
     && curl -sSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
-    && echo 'deb https://deb.nodesource.com/node_9.x artful main' > /etc/apt/sources.list.d/nodesource.list \
+    && echo 'deb https://deb.nodesource.com/node_10.x bionic main' > /etc/apt/sources.list.d/nodesource.list \
     && curl https://download.docker.com/linux/static/edge/x86_64/docker-${DOCKER_CLIENT}.tgz | tar -C /usr/local/bin -xz --strip 1 \
     && curl https://storage.googleapis.com/kubernetes-helm/helm-v${HELM_VERSION}-linux-amd64.tar.gz | tar -C /usr/local/bin -xz --strip 1 \
     && curl https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz |tar -C /usr/local -xz \
@@ -70,6 +70,7 @@ RUN cd /tmp && wget -r -l1 --no-parent -A "code_${VSC_VERSION}-*.deb" -q https:/
     && mkdir /go && cd /go && mkdir src pkg bin \
     && echo "PATH=/go/bin:$PATH" > /etc/profile.d/go.sh \
     && /usr/local/go/bin/go get -u -v \
+	golang.org/x/vgo \
         github.com/derekparker/delve/cmd/dlv \
         github.com/fatih/gomodifytags \
         github.com/tylerb/gotype-live \
