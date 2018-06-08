@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 LABEL maintainer "ulrich.schreiner@gmail.com"
 
-ENV GO_VERSION=1.10.2 \
+ENV GO_VERSION=1.10.3 \
     DOCKER_CLIENT=18.03.1-ce \
     GOPATH=/go \
     HELM_VERSION=2.9.1 \
