@@ -5,7 +5,7 @@ ENV GO_VERSION=1.10.3 \
     DOCKER_CLIENT=18.03.1-ce \
     GOPATH=/go \
     HELM_VERSION=2.9.1 \
-    VSC_VERSION=1.24.0 \
+    VSC_VERSION=1.24.1 \
     GOSU_VERSION=1.10
 
 RUN apt-get update && apt-get install -y \
