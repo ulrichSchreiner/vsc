@@ -94,6 +94,7 @@ RUN cd /tmp && wget -r -l1 --no-parent -A "code_${VSC_VERSION}-*.deb" -q https:/
         golang.org/x/tools/cmd/godoc \
         honnef.co/go/tools/... \
         github.com/davidrjenni/reftools/cmd/fillstruct \
+	github.com/mgechev/revive \
     && /go/bin/gometalinter --install \
     && curl -o /usr/bin/gosu -sSL "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-$(dpkg --print-architecture)" \
     && chmod +x /usr/bin/gosu \
