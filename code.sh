@@ -13,12 +13,12 @@ if [ ! -f $WORKSPACE/.vscode/settings.json ]; then
     WORKDIR="$WORKSPACE"
 fi
 
-code --install-extension lukehoban.Go
-code --install-extension haaaad.ansible
-code --install-extension donjayamanne.githistory
-code --install-extension PeterJausovec.vscode-docker
-code --install-extension waderyan.gitblame
-code --install-extension eamodio.gitlens
+echo 0 | code --install-extension ms-vscode.Go
+echo 0 | code --install-extension haaaad.ansible
+echo 0 | code --install-extension donjayamanne.githistory
+echo 0 | code --install-extension PeterJausovec.vscode-docker
+echo 0 | code --install-extension waderyan.gitblame
+echo 0 | code --install-extension eamodio.gitlens
 
 export GOPATH=$WORKSPACE
 cd $WORKSPACE
