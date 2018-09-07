@@ -4,7 +4,7 @@ LABEL maintainer "ulrich.schreiner@gmail.com"
 ENV GO_VERSION=1.11 \
     DOCKER_CLIENT=18.06.1-ce \
     HELM_VERSION=2.9.1 \
-    VSC_VERSION=1.27.0 \
+    VSC_VERSION=1.27.1 \
     GOSU_VERSION=1.10
 
 RUN apt-get update && apt-get install -y \
