@@ -86,32 +86,9 @@ RUN cd /tmp && wget -r -l1 --no-parent -A "code_${VSC_VERSION}-*.deb" -q https:/
     && cd .. \
     && rm -rf font
 
+ADD installGoTools.py /tmp/
 RUN mkdir /go && cd /go && mkdir src pkg bin \
-    && GOPATH=/go go get -u -v \
-        github.com/derekparker/delve/cmd/dlv \
-        github.com/fatih/gomodifytags \
-        github.com/tylerb/gotype-live \
-        golang.org/x/tools/cmd/goimports \
-        github.com/sourcegraph/go-langserver \
-        github.com/alecthomas/gometalinter \
-        github.com/haya14busa/goplay/cmd/goplay \
-        github.com/mdempsky/gocode \
-        github.com/rogpeppe/godef \
-        github.com/zmb3/gogetdoc \
-        github.com/golang/dep/cmd/dep \
-        github.com/golang/lint/golint \
-        github.com/ramya-rao-a/go-outline \
-        github.com/josharian/impl \
-        sourcegraph.com/sqs/goreturns \
-        golang.org/x/tools/cmd/gorename \
-        github.com/uudashr/gopkgs/cmd/gopkgs \
-        github.com/acroca/go-symbols \
-        golang.org/x/tools/cmd/guru \
-        github.com/cweill/gotests/... \
-        golang.org/x/tools/cmd/godoc \
-        honnef.co/go/tools/... \
-        github.com/davidrjenni/reftools/cmd/fillstruct \
-	github.com/mgechev/revive \
+    && GOPATH=/go python3 -u /tmp/installGoTools.py \
     && GOPATH=/go /go/bin/gometalinter --install \
     && curl -o /usr/bin/gosu -sSL "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-$(dpkg --print-architecture)" \
     && chmod +x /usr/bin/gosu \
