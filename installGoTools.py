@@ -2,6 +2,7 @@ import subprocess
 
 # tool list from here:
 # https://github.com/Microsoft/vscode-go/blob/master/src/goInstallTools.ts
+#
 
 tools = {
     'gocode': 'github.com/mdempsky/gocode',
@@ -36,7 +37,11 @@ tools = {
 for tool, url in tools.items():
     print ("install ", tool)
     if tool.endswith("-gomod"):
-        subprocess.call(["go","get","-d",url])
-        subprocess.call(["go", "build","-i", "-o", "/go/bin/"+tool], cwd="/go/src/"+url)
+        rc = subprocess.call(["go","get","-d",url])
+        rc2 = subprocess.call(["go", "build","-i", "-o", "/go/bin/"+tool], cwd="/go/src/"+url)
+        if rc != 0 or rc2 != 0:
+            print("FAILED: ", tool)
     else:
-        subprocess.call(["go","get",url])
+        rc = subprocess.call(["go","get",url])
+        if rc != 0:
+            print ("FAILED: ", tool)
