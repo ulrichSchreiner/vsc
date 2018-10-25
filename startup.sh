@@ -23,4 +23,4 @@ fi
 ln -s /config/vscode/.config /devhome/.config
 ln -s /config/vscode/.vscode /devhome/.vscode
 
-gosu $HOSTUSER /usr/local/bin/code.sh "$@"
+GO111MODULE=${GO111MODULE:-auto} gosu $HOSTUSER /usr/local/bin/code.sh "$@"

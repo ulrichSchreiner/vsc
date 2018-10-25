@@ -1,11 +1,12 @@
-FROM ubuntu:18.04
+FROM ubuntu:18.10
 LABEL maintainer "ulrich.schreiner@gmail.com"
 
 ENV GO_VERSION=1.11.1 \
     DOCKER_CLIENT=18.06.1-ce \
     HELM_VERSION=2.9.1 \
     VSC_VERSION=1.28.2 \
-    GOSU_VERSION=1.10
+    GOSU_VERSION=1.11 \
+    RIPGREP_VERSION=0.10.0
 
 RUN apt-get update && apt-get install -y \
 	apt-transport-https \
@@ -57,9 +58,11 @@ RUN apt-get update && apt-get install -y \
   apt-get clean && rm -rf /var/lib/apt/*
 
 RUN wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb \
-    && dpkg -i packages-microsoft-prod.deb
+    && dpkg -i packages-microsoft-prod.deb \
+    && rm packages-microsoft-prod.deb
 
 RUN cd /tmp && wget -r -l1 --no-parent -A "code_${VSC_VERSION}-*.deb" -q https://packages.microsoft.com/repos/vscode/pool/main/c/code/ \
+    && curl -sSL https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb >/tmp/ripgrep.deb \
     && curl -sSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
     && echo 'deb https://deb.nodesource.com/node_10.x bionic main' > /etc/apt/sources.list.d/nodesource.list \
     && mkdir -p /usr/local/share/fonts/firacode \
@@ -71,6 +74,7 @@ RUN cd /tmp && wget -r -l1 --no-parent -A "code_${VSC_VERSION}-*.deb" -q https:/
       --no-install-recommends \
     && apt-get clean \
     && dpkg -i /tmp/packages.microsoft.com/repos/vscode/pool/main/c/code/code_${VSC_VERSION}*.deb \
+    && dpkg -i /tmp/ripgrep.deb \
     && rm -rf /var/lib/apt/* /tmp/* /var/tmp/* \
     && curl https://download.docker.com/linux/static/edge/x86_64/docker-${DOCKER_CLIENT}.tgz | tar -C /usr/local/bin -xz --strip 1 \
     && curl https://storage.googleapis.com/kubernetes-helm/helm-v${HELM_VERSION}-linux-amd64.tar.gz | tar -C /usr/local/bin -xz --strip 1 \

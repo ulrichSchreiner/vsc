@@ -17,8 +17,8 @@ echo 0 | code --install-extension PeterJausovec.vscode-docker
 echo 0 | code --install-extension waderyan.gitblame
 echo 0 | code --install-extension eamodio.gitlens
 
-export GOPATH=$WORKSPACE
-export GO111MODULE=on
+export GOPATH=${GOPATH:-${WORKSPACE}}
 
 cd $WORKSPACE
+
 /usr/bin/code --verbose $DISABLE_GPU -p $WORKDIR

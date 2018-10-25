@@ -76,6 +76,10 @@ Note: If you have private repositories where you need your SSH keys, you should 
 When using this alias you do not need to clone this repository. `docker` will
 pull the public image, so be patient when doing this the first time. Note: there is no versioning of the containers at this time. Do a regularly `docker pull quay.io/ulrichschreiner/vsc` to keep the image up to date (the given alias function does this for you).
 
+You can inject some additional environment variables which will be set before VSCode will be started:
+  - `GO111MODULE`
+  - `GOPATH`
+
 ## GPU Rendering
 
 If you see a black window you can add `-e DISABLE_GPU="--disable-gpu"` to your start script.
