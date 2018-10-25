@@ -5,12 +5,12 @@
 ![Screenshot](vsc_debug.png)
 
 This repository bundles VisualStudioCode and their vscode-go extension as well
-as a bunch of go tools in a container. To work with this container, you need
-an installed version of go and [gb](http://getgb.io).
+as a bunch of go tools in a container.
 
-Start this container with `vsc` in your current `gb` workspace from the command
-line. Your user settings and extensions will be stored in your `$HOME/.config/vsc`
-folder but your project settings will stay in your workspace's `.vscode` subdirectory.
+Start this container with `vsc` in your current workspace from the command
+line; you can also start it simply in your `$HOME` directory. Your user settings and 
+extensions will be stored in your `$HOME/.config/vsc` folder but your project settings 
+will stay in your workspace's `.vscode` subdirectory.
 
 
 ## Debug Support
@@ -35,7 +35,7 @@ in vscode with content like this (if your binary is `bin/test`):
 }
 ```
 Note the `mode` which is `exec`; in this case `dlv` will take the binary as it is.
-Now you can build your binary in a shell with `gb build` and debug it inside
+Now you can build your binary in a shell with `go build` and debug it inside
 of vscode with delve!
 
 ## Startup
