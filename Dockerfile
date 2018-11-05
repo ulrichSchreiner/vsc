@@ -10,6 +10,7 @@ ENV GO_VERSION=1.11.2 \
 
 RUN apt-get update && apt-get install -y \
 	apt-transport-https \
+	bc \
 	build-essential \
 	ca-certificates \
 	curl \
