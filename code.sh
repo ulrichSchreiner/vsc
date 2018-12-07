@@ -16,6 +16,8 @@ echo 0 | code --install-extension donjayamanne.githistory
 echo 0 | code --install-extension PeterJausovec.vscode-docker
 echo 0 | code --install-extension waderyan.gitblame
 echo 0 | code --install-extension eamodio.gitlens
+echo 0 | code --install-extension MS-vsliveshare.vsliveshare-pack
+echo 0 | code --install-extension karigari.chat
 
 export GOPATH=${GOPATH:-${WORKSPACE}}
 
