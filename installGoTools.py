@@ -20,7 +20,6 @@ tools = {
 	'godef-gomod': 'github.com/ianthehat/godef',
 	'gogetdoc': 'github.com/zmb3/gogetdoc',
 	'goimports': 'golang.org/x/tools/cmd/goimports',
-	'goimports-gomod': 'github.com/heschik/goimports/cmd/goimports',
 	'goreturns': 'github.com/sqs/goreturns',
 	'goformat': 'winterdrache.de/goformat/goformat',
 	'golint': 'golang.org/x/lint/golint',
