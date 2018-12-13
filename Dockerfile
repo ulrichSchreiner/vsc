@@ -77,6 +77,7 @@ RUN cd /tmp && wget -r -l1 --no-parent -A "code_${VSC_VERSION}-*.deb" -q https:/
     && apt-get clean \
     && dpkg -i /tmp/packages.microsoft.com/repos/vscode/pool/main/c/code/code_${VSC_VERSION}*.deb \
     && dpkg -i /tmp/ripgrep.deb \
+    && wget -O ~/vsls-reqs https://aka.ms/vsls-linux-prereq-script && chmod +x ~/vsls-reqs && ~/vsls-reqs \
     && rm -rf /var/lib/apt/* /tmp/* /var/tmp/* \
     && curl https://download.docker.com/linux/static/edge/x86_64/docker-${DOCKER_CLIENT}.tgz | tar -C /usr/local/bin -xz --strip 1 \
     && curl https://storage.googleapis.com/kubernetes-helm/helm-v${HELM_VERSION}-linux-amd64.tar.gz | tar -C /usr/local/bin -xz --strip 1 \
