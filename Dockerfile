@@ -41,6 +41,7 @@ RUN apt-get update && apt-get install -y \
         libsecret-1-0 \
 	libssl1.?.? \
 	liblttng-ust0 \
+	libpcap-dev \
 	libunwind8 \
 	libuuid1 \
 	libxkbfile1 \
