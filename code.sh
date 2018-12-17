@@ -18,6 +18,7 @@ echo 0 | code --install-extension waderyan.gitblame
 echo 0 | code --install-extension eamodio.gitlens
 echo 0 | code --install-extension MS-vsliveshare.vsliveshare
 echo 0 | code --install-extension MS-vsliveshare.vsliveshare-pack
+echo 0 | code --install-extension humao.rest-client
 
 export GOPATH=${GOPATH:-${WORKSPACE}}
 
