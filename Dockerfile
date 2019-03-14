@@ -4,7 +4,7 @@ LABEL maintainer "ulrich.schreiner@gmail.com"
 ENV GO_VERSION=1.12 \
     DOCKER_CLIENT=18.06.1-ce \
     HELM_VERSION=2.9.1 \
-    VSC_VERSION=1.32.1 \
+    VSC_VERSION=1.32.2 \
     GOSU_VERSION=1.11 \
     RIPGREP_VERSION=0.10.0
 
