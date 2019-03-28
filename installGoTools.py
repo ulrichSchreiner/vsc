@@ -29,7 +29,8 @@ tools = {
 	'revive': 'github.com/mgechev/revive',
 	'go-langserver': 'github.com/sourcegraph/go-langserver',
 	'dlv': 'github.com/derekparker/delve/cmd/dlv',
-	'fillstruct': 'github.com/davidrjenni/reftools/cmd/fillstruct'
+	'fillstruct': 'github.com/davidrjenni/reftools/cmd/fillstruct',
+        'godoctor': 'github.com/godoctor/godoctor'
 }
 
 for tool, url in tools.items():
