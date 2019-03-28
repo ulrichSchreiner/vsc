@@ -6,7 +6,8 @@ ENV GO_VERSION=1.12.1 \
     HELM_VERSION=2.9.1 \
     VSC_VERSION=1.32.3 \
     GOSU_VERSION=1.11 \
-    RIPGREP_VERSION=0.10.0
+    RIPGREP_VERSION=0.10.0 \
+    KUBEFWD_VERSION=1.8.0
 
 RUN apt-get update && apt-get install -y \
 	apt-transport-https \
@@ -50,6 +51,7 @@ RUN apt-get update && apt-get install -y \
 	mercurial \
 	openssh-client \
 	python-pip \
+	sudo \
 	unzip \
 	vim \
 	wget \
@@ -81,6 +83,8 @@ RUN cd /tmp && wget -r -l1 --no-parent -A "code_${VSC_VERSION}-*.deb" -q https:/
     && rm -rf /var/lib/apt/* /tmp/* /var/tmp/* \
     && curl https://download.docker.com/linux/static/edge/x86_64/docker-${DOCKER_CLIENT}.tgz | tar -C /usr/local/bin -xz --strip 1 \
     && curl https://storage.googleapis.com/kubernetes-helm/helm-v${HELM_VERSION}-linux-amd64.tar.gz | tar -C /usr/local/bin -xz --strip 1 \
+    && curl -sSL https://github.com/txn2/kubefwd/releases/download/1.8.0/kubefwd_linux_amd64.tar.gz | tar -C /usr/local/bin -xz \
+    && chown root:root /usr/local/bin/kubefwd && chmod u+s /usr/local/bin/kubefwd \
     && curl https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz |tar -C /usr/local -xz \
     && ln -sf /usr/local/go/bin/* /usr/bin/ \
     && mkdir /devhome \
