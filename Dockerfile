@@ -48,6 +48,7 @@ RUN apt-get update && apt-get install -y \
 	libxkbfile1 \
 	libxss1 \
 	locales \
+	lsof \
 	mercurial \
 	openssh-client \
 	python-pip \
