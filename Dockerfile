@@ -4,10 +4,11 @@ LABEL maintainer "ulrich.schreiner@gmail.com"
 ENV GO_VERSION=1.12.1 \
     DOCKER_CLIENT=18.06.1-ce \
     HELM_VERSION=2.9.1 \
-    VSC_VERSION=1.32.3 \
+    VSC_VERSION=1.33.0 \
     GOSU_VERSION=1.11 \
     RIPGREP_VERSION=0.10.0 \
-    KUBEFWD_VERSION=1.8.0
+    KUBEFWD_VERSION=1.8.0 \
+    FIRACODE_RELEASE=1.206
 
 RUN apt-get update && apt-get install -y \
 	apt-transport-https \
@@ -71,7 +72,7 @@ RUN cd /tmp && wget -r -l1 --no-parent -A "code_${VSC_VERSION}-*.deb" -q https:/
     && curl -sSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
     && echo 'deb https://deb.nodesource.com/node_10.x bionic main' > /etc/apt/sources.list.d/nodesource.list \
     && mkdir -p /usr/local/share/fonts/firacode \
-    && curl -sSL https://github.com/tonsky/FiraCode/raw/master/distr/ttf/FiraCode-Regular.ttf -o /usr/local/share/fonts/firacode/FiraCode-Regular.ttf \
+    && curl -sSL https://github.com/tonsky/FiraCode/tree/${FIRACODE_RELEASE}/distr/ttf/FiraCode-Regular.ttf -o /usr/local/share/fonts/firacode/FiraCode-Regular.ttf \
     && pip install pylint \
     && apt-get update \
     && apt-get install -y \
