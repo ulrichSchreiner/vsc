@@ -52,7 +52,7 @@ RUN apt-get update && apt-get install -y \
 	lsof \
 	mercurial \
 	openssh-client \
-	python-pip \
+	python3-pip \
 	sudo \
 	unzip \
 	vim \
@@ -73,7 +73,7 @@ RUN cd /tmp && wget -r -l1 --no-parent -A "code_${VSC_VERSION}-*.deb" -q https:/
     && echo 'deb https://deb.nodesource.com/node_10.x bionic main' > /etc/apt/sources.list.d/nodesource.list \
     && mkdir -p /usr/local/share/fonts/firacode \
     && curl -sSL https://github.com/tonsky/FiraCode/blob/${FIRACODE_RELEASE}/distr/ttf/FiraCode-Regular.ttf?raw=true -o /usr/local/share/fonts/firacode/FiraCode-Regular.ttf \
-    && pip install pylint \
+    && pip3 install pylint \
     && apt-get update \
     && apt-get install -y \
       nodejs \
