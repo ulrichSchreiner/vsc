@@ -4,7 +4,7 @@ LABEL maintainer "ulrich.schreiner@gmail.com"
 ENV GO_VERSION=1.12.4 \
     DOCKER_CLIENT=18.06.1-ce \
     HELM_VERSION=2.9.1 \
-    VSC_VERSION=1.33.0 \
+    VSC_VERSION=1.33.1 \
     GOSU_VERSION=1.11 \
     RIPGREP_VERSION=0.10.0 \
     KUBEFWD_VERSION=1.8.0 \
@@ -67,7 +67,7 @@ RUN wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsof
     && dpkg -i packages-microsoft-prod.deb \
     && rm packages-microsoft-prod.deb
 
-RUN cd /tmp && wget -r -l1 --no-parent -A "code_${VSC_VERSION}-*.deb" -q https://packages.microsoft.com/repos/vscode/pool/main/c/code/ \
+RUN curl -sSL https://update.code.visualstudio.com/${VSC_VERSION}/linux-deb-x64/stable >/tmp/code.deb \
     && curl -sSL https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb >/tmp/ripgrep.deb \
     && curl -sSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
     && echo 'deb https://deb.nodesource.com/node_10.x bionic main' > /etc/apt/sources.list.d/nodesource.list \
@@ -79,7 +79,7 @@ RUN cd /tmp && wget -r -l1 --no-parent -A "code_${VSC_VERSION}-*.deb" -q https:/
       nodejs \
       --no-install-recommends \
     && apt-get clean \
-    && dpkg -i /tmp/packages.microsoft.com/repos/vscode/pool/main/c/code/code_${VSC_VERSION}*.deb \
+    && dpkg -i /tmp/code.deb \
     && dpkg -i /tmp/ripgrep.deb \
     && wget -O ~/vsls-reqs https://aka.ms/vsls-linux-prereq-script && chmod +x ~/vsls-reqs && ~/vsls-reqs \
     && rm -rf /var/lib/apt/* /tmp/* /var/tmp/* \
