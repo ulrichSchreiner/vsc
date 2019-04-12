@@ -17,6 +17,7 @@ tools = {
 	'impl': 'github.com/josharian/impl',
 	'gotype-live': 'github.com/tylerb/gotype-live',
 	'godef': 'github.com/rogpeppe/godef',
+        'godoc': 'golang.org/x/tools/cmd/godoc',
 	'gogetdoc': 'github.com/zmb3/gogetdoc',
 	'goimports': 'golang.org/x/tools/cmd/goimports',
 	'goreturns': 'github.com/sqs/goreturns',
@@ -27,10 +28,10 @@ tools = {
 	'staticcheck': 'honnef.co/go/tools/...',
 	'golangci-lint': 'github.com/golangci/golangci-lint/cmd/golangci-lint',
 	'revive': 'github.com/mgechev/revive',
-	'go-langserver': 'github.com/sourcegraph/go-langserver',
 	'dlv': 'github.com/derekparker/delve/cmd/dlv',
 	'fillstruct': 'github.com/davidrjenni/reftools/cmd/fillstruct',
-        'godoctor': 'github.com/godoctor/godoctor'
+        'godoctor': 'github.com/godoctor/godoctor',
+        'gopls': 'golang.org/x/tools/cmd/gopls'
 }
 
 for tool, url in tools.items():
