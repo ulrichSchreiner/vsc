@@ -105,6 +105,7 @@ RUN mkdir /go && cd /go && mkdir src pkg bin \
     && GOPATH=/go /go/bin/gometalinter --install \
     && curl -o /usr/bin/gosu -sSL "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-$(dpkg --print-architecture)" \
     && chmod +x /usr/bin/gosu \
+    && cd /tmp && git clone -b bingo https://github.com/saibing/tools.git && cd tools/cmd/gopls && GOPATH=/go go install && rm -rf /tmp/tools \
     && ln -sf /go/bin/* /usr/bin/ \
     && rm -rf /go/pkg/* && rm -rf /go/src/*
 

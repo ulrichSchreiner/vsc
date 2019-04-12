@@ -31,7 +31,7 @@ tools = {
 	'dlv': 'github.com/derekparker/delve/cmd/dlv',
 	'fillstruct': 'github.com/davidrjenni/reftools/cmd/fillstruct',
         'godoctor': 'github.com/godoctor/godoctor',
-        'gopls': 'golang.org/x/tools/cmd/gopls'
+        #'gopls': 'golang.org/x/tools/cmd/gopls'
 }
 
 for tool, url in tools.items():
