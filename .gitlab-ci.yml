@@ -1,7 +1,7 @@
 image: ulrichschreiner/go-web-dev
 
 before_script:
-  - docker login -u $QUAY_USER -p $QUAY_PWD
+  - docker login -u $QUAY_USER -p $QUAY_PWD quay.io
 
 stages:
   - build
