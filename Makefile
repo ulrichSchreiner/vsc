@@ -9,26 +9,26 @@ STABLE := https://update.code.visualstudio.com/$(VSC_VERSION)/linux-deb-x64/stab
 .phony:
 build-stable:
 	docker build \
-		-t ulrichschreiner/vsc:latest \
-		-t ulrichschreiner/vsc:$(VSC_VERSION) \
-		-t ulrichschreiner/vsc:$(TAGVERSION) \
-		-t ulrichschreiner/vsc:$(VSC_MAIN) \
+		-t quay.io/ulrichschreiner/vsc:latest \
+		-t quay.io/ulrichschreiner/vsc:$(VSC_VERSION) \
+		-t quay.io/ulrichschreiner/vsc:$(TAGVERSION) \
+		-t quay.io/ulrichschreiner/vsc:$(VSC_MAIN) \
 		--build-arg VSC_URL=$(STABLE) \
 		.
 
 .phony:
 build-insider:
-	docker build -t ulrichschreiner/vsc:insider \
+	docker build -t quay.io/ulrichschreiner/vsc:insider \
 		--build-arg VSC_URL=$(INSIDER) \
 		.
 
 .phony:
 push:
-	docker push ulrichschreiner/vsc:latest
-	docker push ulrichschreiner/vsc:$(VSC_VERSION)
-	docker push ulrichschreiner/vsc:$(VSC_MAIN)
-	docker push ulrichschreiner/vsc:$(TAGVERSION)
+	docker push quay.io/ulrichschreiner/vsc:latest
+	docker push quay.io/ulrichschreiner/vsc:$(VSC_VERSION)
+	docker push quay.io/ulrichschreiner/vsc:$(VSC_MAIN)
+	docker push quay.io/ulrichschreiner/vsc:$(TAGVERSION)
 
 .phony:
 push-insider:
-	docker push ulrichschreiner/vsc:insider
+	docker push quay.io/ulrichschreiner/vsc:insider
