@@ -9,6 +9,7 @@ build-stable:
 	docker build \
 		-t ulrichschreiner/vsc:latest \
 		-t ulrichschreiner/vsc:$(VSC_VERSION) \
+		-t ulrichschreiner/vsc:$(TAGVERSION) \
 		--build-arg VSC_URL=$(STABLE) \
 		.
 
