@@ -1,0 +1,27 @@
+image: ulrichschreiner/go-web-dev
+
+before_script:
+  - docker login -u $QUAY_USER -p $QUAY_PWD
+
+stages:
+  - build
+
+build stable:
+  stage: build
+  script:
+    - make build-stable push
+  only:
+    - master
+
+build insider:
+  stage: build
+  script:
+    - make build-insider push-insider
+  only:
+    - master
+
+schedule:
+  script:
+    - make build-insider push
+  only:
+    - $SCHEDULE != null

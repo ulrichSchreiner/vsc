@@ -4,11 +4,12 @@ LABEL maintainer "ulrich.schreiner@gmail.com"
 ENV GO_VERSION=1.12.4 \
     DOCKER_CLIENT=18.09.5 \
     HELM_VERSION=2.13.1 \
-    VSC_VERSION=1.33.1 \
     GOSU_VERSION=1.11 \
     RIPGREP_VERSION=11.0.1 \
     KUBEFWD_VERSION=1.8.2 \
     FIRACODE_RELEASE=1.206
+
+ARG VSC_URL
 
 RUN apt-get update && \
   DEBIAN_FRONTEND=noninteractive \
@@ -70,7 +71,7 @@ RUN wget -q https://packages.microsoft.com/config/ubuntu/19.04/packages-microsof
     && rm packages-microsoft-prod.deb \
     && echo "deb [arch=amd64] https://packages.microsoft.com/ubuntu/19.04/prod disco main" >/etc/apt/sources.list.d/microsoft-prod.list
 
-RUN curl -sSL https://update.code.visualstudio.com/${VSC_VERSION}/linux-deb-x64/stable >/tmp/code.deb \
+RUN curl -sSL ${VSC_URL} >/tmp/code.deb \
     && curl -sSL https://github.com/BurntSushi/ripgrep/releases/download/${RIPGREP_VERSION}/ripgrep_${RIPGREP_VERSION}_amd64.deb >/tmp/ripgrep.deb \
     && curl -sSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
     && echo 'deb https://deb.nodesource.com/node_10.x cosmic main' > /etc/apt/sources.list.d/nodesource.list \
