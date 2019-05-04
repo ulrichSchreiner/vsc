@@ -21,6 +21,7 @@ build insider:
     - master
 
 schedule:
+  stage: build
   script:
     - make build-insider push
   only:
