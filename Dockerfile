@@ -66,11 +66,6 @@ RUN apt-get update && \
 	zsh && \
   apt-get clean && rm -rf /var/lib/apt/*
 
-RUN wget https://packages.microsoft.com/config/ubuntu/19.04/packages-microsoft-prod.deb \
-    && dpkg -i packages-microsoft-prod.deb \
-    && rm packages-microsoft-prod.deb \
-    && echo "deb [arch=amd64] https://packages.microsoft.com/ubuntu/19.04/prod disco main" >/etc/apt/sources.list.d/microsoft-prod.list
-
 RUN curl -sSL ${VSC_URL} >/tmp/code.deb \
     && curl -sSL https://github.com/BurntSushi/ripgrep/releases/download/${RIPGREP_VERSION}/ripgrep_${RIPGREP_VERSION}_amd64.deb >/tmp/ripgrep.deb \
     && curl -sSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \
