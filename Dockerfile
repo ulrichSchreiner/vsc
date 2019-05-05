@@ -66,7 +66,7 @@ RUN apt-get update && \
 	zsh && \
   apt-get clean && rm -rf /var/lib/apt/*
 
-RUN wget -q https://packages.microsoft.com/config/ubuntu/19.04/packages-microsoft-prod.deb \
+RUN wget https://packages.microsoft.com/config/ubuntu/19.04/packages-microsoft-prod.deb \
     && dpkg -i packages-microsoft-prod.deb \
     && rm packages-microsoft-prod.deb \
     && echo "deb [arch=amd64] https://packages.microsoft.com/ubuntu/19.04/prod disco main" >/etc/apt/sources.list.d/microsoft-prod.list
