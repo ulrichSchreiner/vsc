@@ -10,18 +10,18 @@ if [ ! -f $WORKSPACE/.vscode/settings.json ]; then
     WORKDIR="$WORKSPACE"
 fi
 
-echo 0 | code --install-extension ms-vscode.Go
-echo 0 | code --install-extension haaaad.ansible
-echo 0 | code --install-extension donjayamanne.githistory
-echo 0 | code --install-extension PeterJausovec.vscode-docker
-echo 0 | code --install-extension waderyan.gitblame
-echo 0 | code --install-extension eamodio.gitlens
-echo 0 | code --install-extension MS-vsliveshare.vsliveshare
-echo 0 | code --install-extension MS-vsliveshare.vsliveshare-pack
-echo 0 | code --install-extension humao.rest-client
+echo 0 | ${CODE_ENTRY} --install-extension ms-vscode.Go
+echo 0 | ${CODE_ENTRY} --install-extension haaaad.ansible
+echo 0 | ${CODE_ENTRY} --install-extension donjayamanne.githistory
+echo 0 | ${CODE_ENTRY} --install-extension PeterJausovec.vscode-docker
+echo 0 | ${CODE_ENTRY} --install-extension waderyan.gitblame
+echo 0 | ${CODE_ENTRY} --install-extension eamodio.gitlens
+echo 0 | ${CODE_ENTRY} --install-extension MS-vsliveshare.vsliveshare
+echo 0 | ${CODE_ENTRY} --install-extension MS-vsliveshare.vsliveshare-pack
+echo 0 | ${CODE_ENTRY}--install-extension humao.rest-client
 
 export GOPATH=${GOPATH:-${WORKSPACE}}
 
 cd $WORKSPACE
 
-/usr/bin/code --verbose $DISABLE_GPU -p $WORKDIR
+${CODE_ENTRY} --verbose $DISABLE_GPU -p $WORKDIR

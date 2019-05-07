@@ -14,12 +14,14 @@ build-stable:
 		-t quay.io/ulrichschreiner/vsc:$(TAGVERSION) \
 		-t quay.io/ulrichschreiner/vsc:$(VSC_MAIN) \
 		--build-arg VSC_URL=$(STABLE) \
+		--build-arg CODE_START=/usr/bin/code \
 		.
 
 .phony:
-build-insider:
-	docker build -t quay.io/ulrichschreiner/vsc:insider \
+build-insiders:
+	docker build -t quay.io/ulrichschreiner/vsc:insiders \
 		--build-arg VSC_URL=$(INSIDER) \
+		--build-arg CODE_START=/usr/bin/code-insiders \
 		.
 
 .phony:
@@ -30,5 +32,5 @@ push:
 	docker push quay.io/ulrichschreiner/vsc:$(TAGVERSION)
 
 .phony:
-push-insider:
-	docker push quay.io/ulrichschreiner/vsc:insider
+push-insiders:
+	docker push quay.io/ulrichschreiner/vsc:insiders

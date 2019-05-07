@@ -16,13 +16,13 @@ build stable:
 build insider:
   stage: build
   script:
-    - make build-insider push-insider
+    - make build-insiders push-insiders
   only:
     - master
 
 schedule:
   stage: build
   script:
-    - make build-insider push
+    - make build-insiders push-insiders
   only:
     - $SCHEDULE != null

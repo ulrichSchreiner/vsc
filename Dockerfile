@@ -107,6 +107,9 @@ RUN mkdir /go && cd /go && mkdir src pkg bin \
     && ln -sf /go/bin/* /usr/bin/ \
     && rm -rf /go/pkg/* && rm -rf /go/src/*
 
+ARG CODE_START
+ENV CODE_ENTRY=${CODE_START}
+
 COPY startup.sh /usr/local/bin/startup.sh
 COPY code.sh /usr/local/bin/code.sh
 COPY projectsettings.json /devhome/projectsettings.json
