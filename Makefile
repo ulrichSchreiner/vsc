@@ -8,7 +8,7 @@ STABLE := https://update.code.visualstudio.com/$(VSC_VERSION)/linux-deb-x64/stab
 
 .phony:
 build-stable:
-	docker build \
+	docker build $(USEBUILDCACHE) \
 		-t quay.io/ulrichschreiner/vsc:latest \
 		-t quay.io/ulrichschreiner/vsc:$(VSC_VERSION) \
 		-t quay.io/ulrichschreiner/vsc:$(TAGVERSION) \
@@ -19,7 +19,8 @@ build-stable:
 
 .phony:
 build-insiders:
-	docker build -t quay.io/ulrichschreiner/vsc:insiders \
+	docker build $(USEBUILDCACHE) \
+		-t quay.io/ulrichschreiner/vsc:insiders \
 		--build-arg VSC_URL=$(INSIDER) \
 		--build-arg CODE_START=/usr/bin/code-insiders \
 		.
