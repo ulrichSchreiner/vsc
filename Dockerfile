@@ -109,6 +109,8 @@ RUN mkdir /go && cd /go && mkdir src pkg bin \
 
 ARG CODE_START
 ENV CODE_ENTRY=${CODE_START}
+ARG VSC_EXT
+ENV VSC_EXT=${VSC_EXT}
 
 COPY startup.sh /usr/local/bin/startup.sh
 COPY code.sh /usr/local/bin/code.sh

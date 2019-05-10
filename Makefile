@@ -14,6 +14,7 @@ build-stable:
 		-t quay.io/ulrichschreiner/vsc:$(TAGVERSION) \
 		-t quay.io/ulrichschreiner/vsc:$(VSC_MAIN) \
 		--build-arg VSC_URL=$(STABLE) \
+		--build-arg VSC_EXT=\
 		--build-arg CODE_START=/usr/bin/code \
 		.
 
@@ -22,6 +23,7 @@ build-insiders:
 	docker build $(USEBUILDCACHE) \
 		-t quay.io/ulrichschreiner/vsc:insiders \
 		--build-arg VSC_URL=$(INSIDER) \
+		--build-arg VSC_EXT=-insiders \
 		--build-arg CODE_START=/usr/bin/code-insiders \
 		.
 

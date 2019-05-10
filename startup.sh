@@ -16,15 +16,20 @@ fi
 
 chown -R $HOSTUSER:$HOSTGROUP /devhome
 
-if [ ! -d "/config/vscode" ]; then
-  gosu $HOSTUSER bash -c "mkdir -p /config/vscode/.config/Code/User /config/vscode/.vscode/extensions"
+if [ ! -d "/config/vscode$VSC_EXT/.config" ]; then
+  gosu $HOSTUSER bash -c "mkdir -p /config/vscode$VSC_EXT/.config/Code/User"
 fi
+
+if [ ! -d "/config/vscode$VSC_EXT/.vscode" ]; then
+  gosu $HOSTUSER bash -c "mkdir -p /config/vscode$VSC_EXT/.vscode/extensions"
+fi
+
 if [ ! -d "/config/vsc-mozilla" ]; then
   gosu $HOSTUSER bash -c "mkdir -p /config/vsc-mozilla"
 fi
 
-ln -s /config/vscode/.config /devhome/.config
-ln -s /config/vscode/.vscode /devhome/.vscode
+ln -s /config/vscode$VSC_EXT/.config /devhome/.config
+ln -s /config/vscode$VSC_EXT/.vscode /devhome/.vscode$VSC_EXT
 ln -s /config/vsc-mozilla /devhome/.mozilla
 
 GO111MODULE=${GO111MODULE:-auto} gosu $HOSTUSER /usr/local/bin/code.sh "$@"
