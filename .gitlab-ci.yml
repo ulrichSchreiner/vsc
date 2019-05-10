@@ -11,14 +11,20 @@ build stable:
   script:
     - make build-stable push
   only:
-    - master
+    refs:
+      - master
+    variables:
+      - $SCHEDULE == null
 
 build insider:
   stage: build
   script:
     - make build-insiders push-insiders
   only:
-    - master
+    refs:
+      - master
+    variables:
+      - $SCHEDULE == null
 
 schedule:
   stage: build
