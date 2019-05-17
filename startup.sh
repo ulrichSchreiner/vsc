@@ -14,6 +14,9 @@ if [ -S /run/docker.sock ]; then
   usermod -a -G docker $HOSTUSER
 fi
 
+echo $HOSTUSER ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$HOSTUSER
+chmod 0440 /etc/sudoers.d/$HOSTUSER
+
 chown -R $HOSTUSER:$HOSTGROUP /devhome
 
 if [ ! -d "/config/vscode$VSC_EXT/.config" ]; then
