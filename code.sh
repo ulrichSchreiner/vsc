@@ -18,6 +18,7 @@ echo 0 | ${CODE_ENTRY} --install-extension eamodio.gitlens
 echo 0 | ${CODE_ENTRY} --install-extension MS-vsliveshare.vsliveshare
 echo 0 | ${CODE_ENTRY} --install-extension MS-vsliveshare.vsliveshare-pack
 echo 0 | ${CODE_ENTRY} --install-extension humao.rest-client
+echo 0 | ${CODE_ENTRY} --install-extension gruntfuggly.todo-tree
 
 export GOPATH=${GOPATH:-${WORKSPACE}}
 
