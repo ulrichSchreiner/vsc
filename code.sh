@@ -14,7 +14,6 @@ echo 0 | ${CODE_ENTRY} --install-extension ms-vscode.Go
 echo 0 | ${CODE_ENTRY} --install-extension haaaad.ansible
 echo 0 | ${CODE_ENTRY} --install-extension donjayamanne.githistory
 echo 0 | ${CODE_ENTRY} --install-extension PeterJausovec.vscode-docker
-echo 0 | ${CODE_ENTRY} --install-extension waderyan.gitblame
 echo 0 | ${CODE_ENTRY} --install-extension eamodio.gitlens
 echo 0 | ${CODE_ENTRY} --install-extension MS-vsliveshare.vsliveshare
 echo 0 | ${CODE_ENTRY} --install-extension MS-vsliveshare.vsliveshare-pack
