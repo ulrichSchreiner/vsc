@@ -1,6 +1,6 @@
 .ONESHELL:
 TAGVERSION := $(shell git describe --tags | sed 's/\(.*\)-.*/\1/')
-VSC_MAIN := 1.34
+VSC_MAIN := 1.35
 VSC_MINOR := 0
 VSC_VERSION := $(VSC_MAIN).$(VSC_MINOR)
 INSIDER := https://vscode-update.azurewebsites.net/latest/linux-deb-x64/insider
