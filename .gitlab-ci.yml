@@ -19,19 +19,12 @@ build stable:
     variables:
       - $SCHEDULE == null
 
-build insider:
+build thin:
   stage: build
   script:
-    - make build-insiders push-insiders
+    - make build-thin push-thin
   only:
     refs:
       - master
     variables:
       - $SCHEDULE == null
-
-schedule:
-  stage: build
-  script:
-    - make build-insiders push-insiders
-  only:
-    - $SCHEDULE != null

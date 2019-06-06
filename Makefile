@@ -11,7 +11,6 @@ build-stable:
 	docker build $(USEBUILDCACHE) \
 		-t quay.io/ulrichschreiner/vsc:latest \
 		-t quay.io/ulrichschreiner/vsc:$(VSC_VERSION) \
-		-t quay.io/ulrichschreiner/vsc:$(TAGVERSION) \
 		-t quay.io/ulrichschreiner/vsc:$(VSC_MAIN) \
 		--build-arg VSC_URL=$(STABLE) \
 		--build-arg VSC_EXT=\
@@ -19,12 +18,15 @@ build-stable:
 		.
 
 .phony:
-build-insiders:
+build-thin:
+	@cd thin
 	docker build $(USEBUILDCACHE) \
-		-t quay.io/ulrichschreiner/vsc:insiders \
-		--build-arg VSC_URL=$(INSIDER) \
-		--build-arg VSC_EXT=-insiders \
-		--build-arg CODE_START=/usr/bin/code-insiders \
+		-t quay.io/ulrichschreiner/vsc-thin:latest \
+		-t quay.io/ulrichschreiner/vsc-thin:$(VSC_VERSION) \
+		-t quay.io/ulrichschreiner/vsc-thin:$(VSC_MAIN) \
+		--build-arg VSC_URL=$(STABLE) \
+		--build-arg VSC_EXT= \
+		--build-arg CODE_START=/usr/bin/code \
 		.
 
 .phony:
@@ -32,8 +34,9 @@ push:
 	docker push quay.io/ulrichschreiner/vsc:latest
 	docker push quay.io/ulrichschreiner/vsc:$(VSC_VERSION)
 	docker push quay.io/ulrichschreiner/vsc:$(VSC_MAIN)
-	docker push quay.io/ulrichschreiner/vsc:$(TAGVERSION)
 
 .phony:
-push-insiders:
-	docker push quay.io/ulrichschreiner/vsc:insiders
+push-thin:
+	docker push quay.io/ulrichschreiner/vsc-thin:latest
+	docker push quay.io/ulrichschreiner/vsc-thin:$(VSC_VERSION)
+	docker push quay.io/ulrichschreiner/vsc-thin:$(VSC_MAIN)

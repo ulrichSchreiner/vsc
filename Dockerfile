@@ -2,7 +2,6 @@ FROM ubuntu:19.04
 LABEL maintainer "ulrich.schreiner@gmail.com"
 
 ENV GO_VERSION=1.12.5 \
-    DOCKER_CLIENT=18.09.5 \
     HELM_VERSION=2.13.1 \
     GOSU_VERSION=1.11 \
     RIPGREP_VERSION=11.0.1 \
@@ -23,6 +22,8 @@ RUN apt-get update && \
 	dbus-x11 \
 	desktop-file-utils \
 	direnv \
+	docker.io \
+	docker-compose \
 	firefox \
 	gcc \
 	gettext \
@@ -43,7 +44,7 @@ RUN apt-get update && \
 	libxtst6 \
 	libnss3 \
 	libglu1-mesa \
-  libsecret-1-0 \
+	libsecret-1-0 \
 	libssl1.?.? \
 	liblttng-ust0 \
 	libpcap-dev \
@@ -81,7 +82,6 @@ RUN curl -sSL ${VSC_URL} >/tmp/code.deb \
     && dpkg -i /tmp/code.deb \
     && dpkg -i /tmp/ripgrep.deb \
     && rm -rf /var/lib/apt/* /tmp/* /var/tmp/* \
-    && curl https://download.docker.com/linux/static/edge/x86_64/docker-${DOCKER_CLIENT}.tgz | tar -C /usr/local/bin -xz --strip 1 \
     && curl https://storage.googleapis.com/kubernetes-helm/helm-v${HELM_VERSION}-linux-amd64.tar.gz | tar -C /usr/local/bin -xz --strip 1 \
     && curl -sSL https://github.com/txn2/kubefwd/releases/download/1.8.0/kubefwd_linux_amd64.tar.gz | tar -C /usr/local/bin -xz \
     && chown root:root /usr/local/bin/kubefwd && chmod u+s /usr/local/bin/kubefwd \

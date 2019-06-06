@@ -1,0 +1,36 @@
+#!/bin/sh
+# source the env to lookup the SSH_AUTH_SOCK
+. "$HOME/.ssh/environment-`hostname -s`"
+
+# TODO: remove this here???
+xhost local:root
+
+docker run -it --rm --net=host --name $HOSTNAME \
+    --ipc=host \
+    --privileged \
+    --security-opt=seccomp:unconfined \
+    -v /tmp/.X11-unix:/tmp/.X11-unix  \
+    -v $HOME:$HOME \
+    -v /etc/passwd:/etc/passwd:ro \
+    -v /etc/group:/etc/group:ro \
+    -v /etc/shadow:/etc/shadow:ro \
+    -v /etc/sudoers:/etc/sudoers:ro \
+    -v /etc/sudoers.d:/etc/sudoers.d:ro \
+    -v $SSH_AUTH_SOCK:$SSH_AUTH_SOCK \
+    -v /var/run/dbus:/var/run/dbus:ro \
+    -v /run/docker.sock:/run/docker.sock:ro \
+    -v /etc/machine-id:/etc/machine-id:ro \
+    -v /run/user/`id -u`:/run/user/`id -u` \
+    --device /dev/dri \
+    --device /dev/snd \
+    -e DISPLAY=unix$DISPLAY \
+    -e SSH_AUTH_SOCK \
+    -e LANG \
+    -e XAUTHORITY \
+    -e SHELL=/usr/bin/zsh \
+    -e HOSTUSER=`id -un` \
+    -e HOSTGROUP=`id -gn` \
+    -e HOSTUID=`id -u` \
+    -e HOSTGID=`id -g` \
+    -w $PWD \
+    quay.io/ulrichschreiner/vsc-thin:latest "$@"
