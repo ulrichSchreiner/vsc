@@ -1,7 +1,7 @@
 .ONESHELL:
 TAGVERSION := $(shell git describe --tags | sed 's/\(.*\)-.*/\1/')
-VSC_MAIN := 1.35
-VSC_MINOR := 1
+VSC_MAIN := 1.36
+VSC_MINOR := 0
 VSC_VERSION := $(VSC_MAIN).$(VSC_MINOR)
 INSIDER := https://vscode-update.azurewebsites.net/latest/linux-deb-x64/insider
 STABLE := https://update.code.visualstudio.com/$(VSC_VERSION)/linux-deb-x64/stable
@@ -16,6 +16,10 @@ build-stable:
 		--build-arg VSC_EXT=\
 		--build-arg CODE_START=/usr/bin/code \
 		.
+
+.phony:
+tag:
+	git tag -am $(VSC_VERSION) $(VSC_VERSION)
 
 .phony:
 build-thin:
