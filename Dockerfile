@@ -38,6 +38,7 @@ RUN apt-get update && \
 	libcurl4 \
 	libgtk2.0-0 \
 	libgconf-2-4 \
+	libgles2-mesa \
 	libicu?? \
 	libkrb5-3 \
 	libnotify-bin \

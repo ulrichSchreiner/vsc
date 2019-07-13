@@ -6,4 +6,4 @@ ${CODE_ENTRY} \
     --install-extension MS-vsliveshare.vsliveshare \
     --install-extension MS-vsliveshare.vsliveshare-pack
 
-${CODE_ENTRY} --ignore-gpu-blacklist --verbose "$@"
+${CODE_ENTRY} $DISABLE_GPU --verbose "$@"

@@ -32,5 +32,6 @@ docker run -it --rm --net=host --name $HOSTNAME \
     -e HOSTGROUP=`id -gn` \
     -e HOSTUID=`id -u` \
     -e HOSTGID=`id -g` \
+    -e DISABLE_GPU=--disable-gpu \
     -w $PWD \
     quay.io/ulrichschreiner/vsc-thin:latest "$@"
