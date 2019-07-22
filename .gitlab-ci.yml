@@ -13,18 +13,8 @@ build stable:
   stage: build
   script:
     - make build-stable push
-  only:
-    refs:
-      - master
-    variables:
-      - $SCHEDULE == null
 
 build thin:
   stage: build
   script:
     - make build-thin push-thin
-  only:
-    refs:
-      - master
-    variables:
-      - $SCHEDULE == null
