@@ -11,4 +11,20 @@ steps:
       from_secret: quay_password
     DOCKER_HOST: tcp://dind.service:2375
   commands:
-    - make login build-stable
+    - make login build-stable push
+
+---
+kind: pipeline
+name: thin
+
+steps:
+- name: build-thin
+  image: ulrichschreiner/go-web-dev
+  environment:
+    QUAY_USER:
+      from_secret: quay_username
+    QUAY_PWD:
+      from_secret: quay_password
+    DOCKER_HOST: tcp://dind.service:2375
+  commands:
+    - make login build-thin push-thin
