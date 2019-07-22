@@ -13,8 +13,6 @@ build-stable:
 		-t quay.io/ulrichschreiner/vsc:$(VSC_VERSION) \
 		-t quay.io/ulrichschreiner/vsc:$(VSC_MAIN) \
 		--build-arg VSC_URL=$(STABLE) \
-		--build-arg VSC_EXT=\
-		--build-arg CODE_START=/usr/bin/code \
 		.
 
 .phony:
@@ -29,8 +27,6 @@ build-thin:
 		-t quay.io/ulrichschreiner/vsc-thin:$(VSC_VERSION) \
 		-t quay.io/ulrichschreiner/vsc-thin:$(VSC_MAIN) \
 		--build-arg VSC_URL=$(STABLE) \
-		--build-arg VSC_EXT= \
-		--build-arg CODE_START=/usr/bin/code \
 		.
 
 .phony:
@@ -44,3 +40,7 @@ push-thin:
 	docker push quay.io/ulrichschreiner/vsc-thin:latest
 	docker push quay.io/ulrichschreiner/vsc-thin:$(VSC_VERSION)
 	docker push quay.io/ulrichschreiner/vsc-thin:$(VSC_MAIN)
+
+.phony:
+login:
+	docker login -u $(QUAY_USER) -p $(QUAY_PWD) quay.io

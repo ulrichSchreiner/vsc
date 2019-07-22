@@ -1,0 +1,14 @@
+kind: pipeline
+name: stable
+
+steps:
+- name: build-all
+  image: ulrichschreiner/go-web-dev
+  environment:
+    QUAY_USER:
+      from_secret: quay_username
+    QUAY_PWD:
+      from_secret: quay_password
+    DOCKER_HOST: tcp://dind.service:2375
+  commands:
+    - make login build-stable
