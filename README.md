@@ -1,6 +1,6 @@
 # vscode-go in a container
 
-[![Docker Repository on Quay](https://quay.io/repository/ulrichschreiner/vsc/status "Docker Repository on Quay")](https://quay.io/repository/ulrichschreiner/vsc)
+[![Build Status](https://github.drone.protegear.io/api/badges/ulrichSchreiner/vsc/status.svg)](https://github.drone.protegear.io/ulrichSchreiner/vsc)
 
 ![Screenshot](vsc_debug.png)
 
@@ -8,8 +8,8 @@ This repository bundles VisualStudioCode and their vscode-go extension as well
 as a bunch of go tools in a container.
 
 Start this container with `vsc` in your current workspace from the command
-line; you can also start it simply in your `$HOME` directory. Your user settings and 
-extensions will be stored in your `$HOME/.config/vsc` folder but your project settings 
+line; you can also start it simply in your `$HOME` directory. Your user settings and
+extensions will be stored in your `$HOME/.config/vsc` folder but your project settings
 will stay in your workspace's `.vscode` subdirectory.
 
 
