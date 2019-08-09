@@ -5,8 +5,6 @@ import subprocess
 #
 
 tools = {
-	'gocode': 'github.com/mdempsky/gocode',
-	'gocode-gomod': 'github.com/stamblerre/gocode',
 	'gopkgs': 'github.com/uudashr/gopkgs/cmd/gopkgs',
 	'go-outline': 'github.com/ramya-rao-a/go-outline',
 	'go-symbols': 'github.com/acroca/go-symbols',
@@ -31,7 +29,7 @@ tools = {
 	'dlv': 'github.com/derekparker/delve/cmd/dlv',
 	'fillstruct': 'github.com/davidrjenni/reftools/cmd/fillstruct',
         'godoctor': 'github.com/godoctor/godoctor',
-        #'gopls': 'golang.org/x/tools/cmd/gopls'
+        'gopls': 'golang.org/x/tools/cmd/gopls'
 }
 
 for tool, url in tools.items():
