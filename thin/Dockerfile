@@ -4,7 +4,7 @@ LABEL maintainer "ulrich.schreiner@gmail.com"
 ENV FIRACODE_RELEASE=1.206 \
     GOSU_VERSION=1.11
 
-ARG CODE_START
+ARG CODE_START=/usr/bin/code
 ARG VSC_EXT
 ARG VSC_URL
 
