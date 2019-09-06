@@ -101,7 +101,6 @@ RUN curl -sSL ${VSC_URL} >/tmp/code.deb \
 ADD installGoTools.py /tmp/
 RUN mkdir /go && cd /go && mkdir src pkg bin \
     && GOPATH=/go python3 -u /tmp/installGoTools.py \
-    && GOPATH=/go /go/bin/gometalinter --install \
     && curl -o /usr/bin/gosu -sSL "https://github.com/tianon/gosu/releases/download/${GOSU_VERSION}/gosu-$(dpkg --print-architecture)" \
     && chmod +x /usr/bin/gosu \
     && ln -sf /go/bin/* /usr/bin/ \
