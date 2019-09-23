@@ -27,16 +27,15 @@ tools = {
     'staticcheck': 'honnef.co/go/tools/...',
     'golangci-lint': 'github.com/golangci/golangci-lint/cmd/golangci-lint',
     'revive': 'github.com/mgechev/revive',
-    'dlv': 'github.com/derekparker/delve/cmd/dlv',
+    'dlv': 'github.com/go-delve/delve/cmd/dlv',
     'godoctor': 'github.com/godoctor/godoctor',
-    'gopls': 'golang.org/x/tools/cmd/gopls'
+    'gopls': 'golang.org/x/tools/gopls'
 }
 
 for tool, url in tools.items():
     print ("install ", tool)
     if tool.endswith("-gomod"):
-        rc = subprocess.call(["go","get","-d",url])
-        rc2 = subprocess.call(["go", "build","-i", "-o", "/go/bin/"+tool], cwd="/go/src/"+url)
+        rc = subprocess.call(["go","install",url])
         if rc != 0 or rc2 != 0:
             print("FAILED: ", tool)
     else:
