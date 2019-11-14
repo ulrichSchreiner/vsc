@@ -1,4 +1,4 @@
-FROM ubuntu:19.04
+FROM ubuntu:19.10
 LABEL maintainer "ulrich.schreiner@gmail.com"
 
 ENV FIRACODE_RELEASE=1.206 \
