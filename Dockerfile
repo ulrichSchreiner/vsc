@@ -1,7 +1,7 @@
 FROM ubuntu:19.10
 LABEL maintainer "ulrich.schreiner@gmail.com"
 
-ENV GO_VERSION=1.13.4 \
+ENV GO_VERSION=1.13.5 \
     HELM_VERSION=2.16.1 \
     GOSU_VERSION=1.11 \
     RIPGREP_VERSION=11.0.1 \
