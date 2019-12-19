@@ -60,6 +60,7 @@ RUN apt-get update && \
     openssh-client \
     sudo \
     tmux \
+    tzdata \
     unzip \
     vim \
     wget \

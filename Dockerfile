@@ -59,6 +59,7 @@ RUN apt-get update && \
 	openssh-client \
 	python3-pip \
 	sudo \
+	tzdata \
 	unzip \
 	vim \
 	wget \
