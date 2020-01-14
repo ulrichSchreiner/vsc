@@ -1,3 +1,11 @@
+# DISCONTINUED
+
+As Visual Studio Code now supports remote development with containers you can install vscode locally and use different
+images with preinstalled tools for your favourite language (go, rust, ...). You do not need to install all those 
+language SDK's on your local machine any more.
+
+So in my opinion it is not needed any more to package VSCode in a separate image any more. 
+
 # vscode-go in a container
 
 [![Build Status](https://github.drone.protegear.io/api/badges/ulrichSchreiner/vsc/status.svg)](https://github.drone.protegear.io/ulrichSchreiner/vsc)
